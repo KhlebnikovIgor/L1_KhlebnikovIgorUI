@@ -7,6 +7,14 @@
 //
 
 import UIKit
-class FrendCell:UITableViewCell{
+class FrendTableCell:UITableViewCell{
     
+    @IBOutlet weak var nameFrend: UILabel!
+    @IBOutlet weak var photoFrend: RoundedAvatar!
+  
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameFrend.text = nil
+        photoFrend.nameImage = nil
+    }
 }

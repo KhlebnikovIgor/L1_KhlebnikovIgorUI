@@ -7,21 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7808F853235244B900A696B1 /* NewsLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F852235244B900A696B1 /* NewsLineController.swift */; };
+		7808F8552352479800A696B1 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7808F8542352479700A696B1 /* NewsCell.xib */; };
+		7808F8572352495600A696B1 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F8562352495600A696B1 /* NewsCell.swift */; };
+		78236123232C62E900A3A46D /* FrendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78236122232C62E900A3A46D /* FrendsController.swift */; };
+		78236127232C666E00A3A46D /* UserGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78236126232C666E00A3A46D /* UserGroupsController.swift */; };
+		78236129232C66B300A3A46D /* AllGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78236128232C66B300A3A46D /* AllGroupsController.swift */; };
+		7823612B232C691200A3A46D /* AboutAFrendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823612A232C691200A3A46D /* AboutAFrendController.swift */; };
+		7823612E232C712800A3A46D /* FrendTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823612D232C712800A3A46D /* FrendTableCell.swift */; };
+		78236130232C78D000A3A46D /* FrendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823612F232C78D000A3A46D /* FrendCollectionCell.swift */; };
+		78236132232C7A7900A3A46D /* GroupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78236131232C7A7900A3A46D /* GroupTableCell.swift */; };
 		783C78EA232AF1A400FF27AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C78E9232AF1A400FF27AD /* AppDelegate.swift */; };
-		783C78EC232AF1A400FF27AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C78EB232AF1A400FF27AD /* ViewController.swift */; };
 		783C78EF232AF1A400FF27AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 783C78ED232AF1A400FF27AD /* Main.storyboard */; };
 		783C78F1232AF1AD00FF27AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 783C78F0232AF1AD00FF27AD /* Assets.xcassets */; };
 		783C78F4232AF1AD00FF27AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 783C78F2232AF1AD00FF27AD /* LaunchScreen.storyboard */; };
+		783C78FC232AF24C00FF27AD /* LoginFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C78FB232AF24C00FF27AD /* LoginFormController.swift */; };
+		7871A6C823307AE5002F0E74 /* LikedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7871A6C723307AE5002F0E74 /* LikedControl.swift */; };
+		7871A6CA23308F4A002F0E74 /* RoundedAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7871A6C923308F4A002F0E74 /* RoundedAvatar.swift */; };
+		78BF938F2353682500444FC9 /* LikedCounterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF938E2353682500444FC9 /* LikedCounterControl.swift */; };
+		78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */; };
+		7B57AE7323CC4974007B017F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B57AE7223CC4974007B017F /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7808F852235244B900A696B1 /* NewsLineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLineController.swift; sourceTree = "<group>"; };
+		7808F8542352479700A696B1 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		7808F8562352495600A696B1 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		78236122232C62E900A3A46D /* FrendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendsController.swift; sourceTree = "<group>"; };
+		78236126232C666E00A3A46D /* UserGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsController.swift; sourceTree = "<group>"; };
+		78236128232C66B300A3A46D /* AllGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsController.swift; sourceTree = "<group>"; };
+		7823612A232C691200A3A46D /* AboutAFrendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAFrendController.swift; sourceTree = "<group>"; };
+		7823612D232C712800A3A46D /* FrendTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendTableCell.swift; sourceTree = "<group>"; };
+		7823612F232C78D000A3A46D /* FrendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendCollectionCell.swift; sourceTree = "<group>"; };
+		78236131232C7A7900A3A46D /* GroupTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableCell.swift; sourceTree = "<group>"; };
 		783C78E6232AF1A400FF27AD /* L1_KhlebnikovIgorUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = L1_KhlebnikovIgorUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		783C78E9232AF1A400FF27AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		783C78EB232AF1A400FF27AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		783C78EE232AF1A400FF27AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		783C78F0232AF1AD00FF27AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		783C78F3232AF1AD00FF27AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		783C78F5232AF1AD00FF27AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		783C78FB232AF24C00FF27AD /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
+		7871A6C723307AE5002F0E74 /* LikedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedControl.swift; sourceTree = "<group>"; };
+		7871A6C923308F4A002F0E74 /* RoundedAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedAvatar.swift; sourceTree = "<group>"; usesTabs = 0; };
+		78BF938E2353682500444FC9 /* LikedCounterControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCounterControl.swift; sourceTree = "<group>"; };
+		78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryController.swift; sourceTree = "<group>"; };
+		7B57AE7223CC4974007B017F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +65,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7823611C232BEEE900A3A46D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				7B57AE7123CC47D9007B017F /* Model */,
+				7823612C232C70FA00A3A46D /* Cells */,
+				783C78E9232AF1A400FF27AD /* AppDelegate.swift */,
+				78236121232BF0C600A3A46D /* Views */,
+				78236120232BF08C00A3A46D /* Controllers */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		7823611F232BEF3F00A3A46D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				783C78F2232AF1AD00FF27AD /* LaunchScreen.storyboard */,
+				783C78ED232AF1A400FF27AD /* Main.storyboard */,
+				783C78F0232AF1AD00FF27AD /* Assets.xcassets */,
+				7808F8542352479700A696B1 /* NewsCell.xib */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		78236120232BF08C00A3A46D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				783C78FB232AF24C00FF27AD /* LoginFormController.swift */,
+				78236122232C62E900A3A46D /* FrendsController.swift */,
+				78236126232C666E00A3A46D /* UserGroupsController.swift */,
+				78236128232C66B300A3A46D /* AllGroupsController.swift */,
+				7823612A232C691200A3A46D /* AboutAFrendController.swift */,
+				78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */,
+				7808F852235244B900A696B1 /* NewsLineController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		78236121232BF0C600A3A46D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7871A6C723307AE5002F0E74 /* LikedControl.swift */,
+				7871A6C923308F4A002F0E74 /* RoundedAvatar.swift */,
+				78BF938E2353682500444FC9 /* LikedCounterControl.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		7823612C232C70FA00A3A46D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7823612D232C712800A3A46D /* FrendTableCell.swift */,
+				7823612F232C78D000A3A46D /* FrendCollectionCell.swift */,
+				78236131232C7A7900A3A46D /* GroupTableCell.swift */,
+				7808F8562352495600A696B1 /* NewsCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		783C78DD232AF1A400FF27AD = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +142,19 @@
 		783C78E8232AF1A400FF27AD /* L1_KhlebnikovIgorUI */ = {
 			isa = PBXGroup;
 			children = (
-				783C78E9232AF1A400FF27AD /* AppDelegate.swift */,
-				783C78EB232AF1A400FF27AD /* ViewController.swift */,
-				783C78ED232AF1A400FF27AD /* Main.storyboard */,
-				783C78F0232AF1AD00FF27AD /* Assets.xcassets */,
-				783C78F2232AF1AD00FF27AD /* LaunchScreen.storyboard */,
+				7823611F232BEF3F00A3A46D /* Resource */,
+				7823611C232BEEE900A3A46D /* Source */,
 				783C78F5232AF1AD00FF27AD /* Info.plist */,
 			);
 			path = L1_KhlebnikovIgorUI;
+			sourceTree = "<group>";
+		};
+		7B57AE7123CC47D9007B017F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B57AE7223CC4974007B017F /* Session.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				783C78F4232AF1AD00FF27AD /* LaunchScreen.storyboard in Resources */,
+				7808F8552352479800A696B1 /* NewsCell.xib in Resources */,
 				783C78F1232AF1AD00FF27AD /* Assets.xcassets in Resources */,
 				783C78EF232AF1A400FF27AD /* Main.storyboard in Resources */,
 			);
@@ -135,8 +229,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				783C78EC232AF1A400FF27AD /* ViewController.swift in Sources */,
+				78236127232C666E00A3A46D /* UserGroupsController.swift in Sources */,
+				7808F853235244B900A696B1 /* NewsLineController.swift in Sources */,
+				7823612E232C712800A3A46D /* FrendTableCell.swift in Sources */,
+				78236132232C7A7900A3A46D /* GroupTableCell.swift in Sources */,
+				7808F8572352495600A696B1 /* NewsCell.swift in Sources */,
+				7823612B232C691200A3A46D /* AboutAFrendController.swift in Sources */,
+				78BF938F2353682500444FC9 /* LikedCounterControl.swift in Sources */,
 				783C78EA232AF1A400FF27AD /* AppDelegate.swift in Sources */,
+				78236129232C66B300A3A46D /* AllGroupsController.swift in Sources */,
+				783C78FC232AF24C00FF27AD /* LoginFormController.swift in Sources */,
+				7871A6CA23308F4A002F0E74 /* RoundedAvatar.swift in Sources */,
+				78236123232C62E900A3A46D /* FrendsController.swift in Sources */,
+				7B57AE7323CC4974007B017F /* Session.swift in Sources */,
+				78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */,
+				78236130232C78D000A3A46D /* FrendCollectionCell.swift in Sources */,
+				7871A6C823307AE5002F0E74 /* LikedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

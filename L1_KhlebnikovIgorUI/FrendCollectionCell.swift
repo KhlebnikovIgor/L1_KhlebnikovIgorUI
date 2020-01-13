@@ -6,4 +6,21 @@
 //  Copyright © 2019 Igor. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class FrendCollectionCell:UICollectionViewCell{
+    
+    @IBOutlet weak var nameFrend: UILabel!
+    
+    @IBOutlet weak var photoFrend: RoundedAvatar!
+
+    
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        nameFrend.text = nil
+        photoFrend.nameImage = nil
+
+    }
+}
