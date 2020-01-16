@@ -7,26 +7,86 @@
 //
 
 import UIKit
+import WebKit
 
 class LoginFormController: UIViewController {
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var loginInput: UITextField!
-    @IBOutlet weak var passwordInput: UITextField!
+
+
+    var webView : WKWebView!
+    let VKSecret = "7281162"
+    var vkApi = VKApi()
     
-    @IBAction func clickLoginButton(_ sender: Any) {
-    //    performSegue(withIdentifier: "fromLoginController", sender: self)
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let webViewConfig = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webViewConfig)
+        webView.navigationDelegate = self
         
-
-        // Do any additional setup after loading the view.
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "oauth.vk.com"
+        urlComponents.path = "/authorize"
+        urlComponents.queryItems = [URLQueryItem(name: "client_id", value: VKSecret),
+                                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+                                    URLQueryItem(name: "display", value: "mobile"),
+                                    URLQueryItem(name: "scope", value: "262150"),//битовая маска или список строковых параметров доступа к ресурсам ВК
+                                    URLQueryItem(name: "response_type", value: "token"),
+                                    URLQueryItem(name: "v", value: "5.103")
+                                    ]
+        let request = URLRequest(url: urlComponents.url!)
+        webView.load(request)
+        view = webView
     }
-    
 
+}
 
-    @objc func keyboardWasShown(notification: Notification){
+extension LoginFormController: WKNavigationDelegate{
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        
+        guard let url = navigationResponse.response.url,
+            url.path == "/blank.html",
+            let  fragment = url.fragment else {
+                decisionHandler(.allow)
+                return
+        }
+        let params = fragment.components(separatedBy: "&")
+            .map{$0.components(separatedBy: "=")}
+            .reduce([String : String]()){
+                value, params in
+                var dict = value
+                let key = params[0]
+                let value = params[1]
+                dict[key] = value
+                return dict
+        }
+        
+        print(params)
+        
+        Session.shared.token = params["access_token"]!
+        Session.shared.userId = params["user_id"]!
+        
+        vkApi.getFriends(token: Session.shared.token)
+        vkApi.getPhotos(token: Session.shared.token)
+        vkApi.getGroups(token: Session.shared.token)
+        vkApi.searchGroups(token: Session.shared.token, q: "ф")
+        
+        decisionHandler(.cancel)
+    }
+}
+
+/*
+     @IBOutlet weak var scrollView: UIScrollView!
+     @IBOutlet weak var loginInput: UITextField!
+     @IBOutlet weak var passwordInput: UITextField!
+     
+     @IBAction func clickLoginButton(_ sender: Any) {
+     //    performSegue(withIdentifier: "fromLoginController", sender: self)
+     }
+     
+     
+     @objc func keyboardWasShown(notification: Notification){
 //получаем размер клавиатуры
         let info = notification.userInfo! as NSDictionary
         let kbSize = (info.value(forKey:UIResponder.keyboardFrameEndUserInfoKey)as!NSValue).cgRectValue
@@ -36,7 +96,7 @@ class LoginFormController: UIViewController {
         scrollView?.scrollIndicatorInsets = contentInsets
     }
     
-    //когда клавиатура исчезает
+   //когда клавиатура исчезает
     @objc func keyboardWillBeHidden(notification: Notification){
         //устанавливаем отступ внизу UIScrrollView равный 0
         let contentInsets = UIEdgeInsets.zero
@@ -57,7 +117,7 @@ class LoginFormController: UIViewController {
         
     NotificationCenter.default.removeObserver(self,name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+ 
     
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -82,9 +142,7 @@ class LoginFormController: UIViewController {
             return false
         }
         
-        let session = Session.instance
-        session.token = "69hjkhggdh"
-        session.userId = 65789
+       
         
         return login=="admin" && password=="123456"
     }
@@ -95,5 +153,5 @@ class LoginFormController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true)
     }
+ */
 
-}

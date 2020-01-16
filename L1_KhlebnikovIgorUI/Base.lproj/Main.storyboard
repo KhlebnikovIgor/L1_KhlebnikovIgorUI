@@ -360,7 +360,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="Войти"/>
                                         <connections>
-                                            <action selector="clickLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tg3-xW-PMJ"/>
                                             <segue destination="etp-l0-TKG" kind="show" identifier="fromLoginController" id="eL2-aW-tRh"/>
                                         </connections>
                                     </button>
@@ -392,11 +391,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sVx-we-IRh"/>
                     </view>
-                    <connections>
-                        <outlet property="loginInput" destination="mkz-dt-UvN" id="K2Z-Fz-fPp"/>
-                        <outlet property="passwordInput" destination="6rg-wX-ldz" id="MLR-nV-TiP"/>
-                        <outlet property="scrollView" destination="a8S-QS-NqG" id="p7C-Rh-bwK"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
