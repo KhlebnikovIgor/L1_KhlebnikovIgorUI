@@ -34,7 +34,7 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
             for user in users{
                 //self.frends.f["Д"]?.append(<#T##newElement: (name: String, image: String)##(name: String, image: String)#>)
                 self.frends.append((title: String(user.firstName[user.firstName.startIndex]),
-                                    [(name: user.firstName, image: user.photo50 ?? "")]))
+                                    [(name: user.firstName, image: user.photo100 ?? "")]))
             }
             self.filteredFrends = self.frends
             self.tableView.reloadData()

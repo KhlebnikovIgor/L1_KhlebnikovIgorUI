@@ -85,9 +85,3 @@ extension UIButton {
 }
 
 
- 
- 
-// let url = URL(string: filteredFrends[section].1[index].image)
- //destinationController.photoFrend.downloadImage(from: url!)// = //filteredFrends[section].1[index].image
- 
- //self.imgView.downloadImage(from: url!)

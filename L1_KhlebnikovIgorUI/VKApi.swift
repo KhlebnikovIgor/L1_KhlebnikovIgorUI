@@ -17,7 +17,7 @@ class VKApi{
         let requestURL = vkURL  + "friends.get"
         let params = ["access_token": token,
                       "order": "name",
-                      "fields": "city,domain,photo_50",
+                      "fields": "city,domain,photo_100",
                       "v":"5.103"]
         
          Alamofire.request(requestURL,

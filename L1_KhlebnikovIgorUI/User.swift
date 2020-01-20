@@ -26,7 +26,7 @@ struct User: Codable {
     let trackCode: String
     let deactivated: String?
     let city: City?
-    let photo50: String?
+    let photo100: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -37,7 +37,7 @@ struct User: Codable {
         case domain, online
         case trackCode = "track_code"
         case deactivated, city
-        case photo50 = "photo_50"
+        case photo100 = "photo_100"
     }
 }
 
