@@ -10,7 +10,7 @@ import UIKit
 
 class UserGroupsController:  UITableViewController {
     var groups: [(name: String, image: String)] = []
-    
+    var vkApi = VKApi()
  
     
     @IBAction func returnToUserGroups(unwindSegue: UIStoryboardSegue) {
@@ -24,6 +24,16 @@ class UserGroupsController:  UITableViewController {
                 tableView.insertRows(at: [IndexPath(row: groups.count - 1, section: 0)], with: .fade)
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        vkApi.getGroups(token: Session.shared.token, completionHandler: { (items: [Group]) in
+            for group in items{
+                self.groups.append((name: group.name, image: group.photo50))
+            }
+            self.tableView.reloadData()
+        } )
     }
     
     // MARK: - Table view data source

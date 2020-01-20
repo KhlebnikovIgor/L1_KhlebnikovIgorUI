@@ -7,3 +7,32 @@
 //
 
 import Foundation
+
+struct PhotoJson: Codable {
+    let response: ResponsePhotos
+}
+
+struct ResponsePhotos: Codable {
+    let count: Int
+    let items: [Photo]
+}
+
+struct Photo: Codable {
+    let id, albumID, ownerID: Int
+    let sizes: [Size]
+    let text: String
+    let date: Int
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case albumID = "album_id"
+        case ownerID = "owner_id"
+        case sizes, text, date
+    }
+}
+
+struct Size: Codable {
+    let type: String
+    let url: String
+    let width, height: Int
+}

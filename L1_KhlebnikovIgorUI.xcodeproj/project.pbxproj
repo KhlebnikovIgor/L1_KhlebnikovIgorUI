@@ -28,6 +28,9 @@
 		78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */; };
 		7B57AE9623CEE2D2007B017F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B57AE9523CEE2D2007B017F /* Session.swift */; };
 		7BAACF2123CEFF72003BE01A /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAACF2023CEFF72003BE01A /* VKApi.swift */; };
+		7BE54A0023D1B83D00F49BA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE549FF23D1B83D00F49BA4 /* User.swift */; };
+		7BE54A0223D1CE0600F49BA4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE54A0123D1CE0600F49BA4 /* Photo.swift */; };
+		7BE54A0423D1D12000F49BA4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE54A0323D1D12000F49BA4 /* Group.swift */; };
 		E0BDA920D1A83662142ECDD7 /* Pods_L1_KhlebnikovIgorUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6605B593753947368833BB96 /* Pods_L1_KhlebnikovIgorUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +60,9 @@
 		78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryController.swift; sourceTree = "<group>"; };
 		7B57AE9523CEE2D2007B017F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		7BAACF2023CEFF72003BE01A /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
+		7BE549FF23D1B83D00F49BA4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7BE54A0123D1CE0600F49BA4 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		7BE54A0323D1D12000F49BA4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		A1FB42D4F9556466C92C637B /* Pods-L1_KhlebnikovIgorUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L1_KhlebnikovIgorUI.debug.xcconfig"; path = "Target Support Files/Pods-L1_KhlebnikovIgorUI/Pods-L1_KhlebnikovIgorUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				7B57AE9523CEE2D2007B017F /* Session.swift */,
+				7BE549FF23D1B83D00F49BA4 /* User.swift */,
+				7BE54A0123D1CE0600F49BA4 /* Photo.swift */,
+				7BE54A0323D1D12000F49BA4 /* Group.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -311,6 +320,7 @@
 				78236127232C666E00A3A46D /* UserGroupsController.swift in Sources */,
 				7808F853235244B900A696B1 /* NewsLineController.swift in Sources */,
 				7823612E232C712800A3A46D /* FrendTableCell.swift in Sources */,
+				7BE54A0423D1D12000F49BA4 /* Group.swift in Sources */,
 				78236132232C7A7900A3A46D /* GroupTableCell.swift in Sources */,
 				7808F8572352495600A696B1 /* NewsCell.swift in Sources */,
 				7823612B232C691200A3A46D /* AboutAFrendController.swift in Sources */,
@@ -320,8 +330,10 @@
 				783C78FC232AF24C00FF27AD /* LoginFormController.swift in Sources */,
 				7871A6CA23308F4A002F0E74 /* RoundedAvatar.swift in Sources */,
 				78236123232C62E900A3A46D /* FrendsController.swift in Sources */,
+				7BE54A0223D1CE0600F49BA4 /* Photo.swift in Sources */,
 				7B57AE9623CEE2D2007B017F /* Session.swift in Sources */,
 				7BAACF2123CEFF72003BE01A /* VKApi.swift in Sources */,
+				7BE54A0023D1B83D00F49BA4 /* User.swift in Sources */,
 				78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */,
 				78236130232C78D000A3A46D /* FrendCollectionCell.swift in Sources */,
 				7871A6C823307AE5002F0E74 /* LikedControl.swift in Sources */,

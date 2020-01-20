@@ -13,70 +13,96 @@ class VKApi{
     let vkURL = "https://api.vk.com/method/"
     
     //получение списка друзей
-    func getFriends(token : String){
+    func getFriends(token : String, completionHandler: @escaping ([User])->Void){
         let requestURL = vkURL  + "friends.get"
         let params = ["access_token": token,
                       "order": "name",
-                      "fields": "city,domain",
+                      "fields": "city,domain,photo_50",
                       "v":"5.103"]
         
          Alamofire.request(requestURL,
                            method: .post,
                            parameters: params)
-            .responseString(completionHandler: { (response) in
-                print("список друзей: " + String(response.value!))
-                print(response.error ?? "")
-            })
+            .responseData { (response) in
+                guard let data = response.value else {return}
+                do
+                {
+                    let users = try JSONDecoder().decode(UserJson.self, from: data)
+                    completionHandler(users.response.items)
+                } catch{
+                    print(error)
+                }
+            }
     }
     
    
     //получение списка фотографий
-    func getPhotos(token : String){
+    func getPhotos(token : String, completionHandler: @escaping ([Photo])->Void){
         let requestURL = vkURL  + "photos.get"
         let params = ["access_token": token,
-                      "album_id": "saved",
+                      "album_id": "wall",
                       "v": "5.103"]
         
          Alamofire.request(requestURL,
                           method: .post,
                           parameters: params)
-            .responseString(completionHandler: { (response) in
-                print("список фотографий: " + String(response.value!))
-                print(response.error ?? "")
-            })
+            .responseData { (response) in
+                guard let data = response.value else {return}
+                do
+                {
+                    let photos = try JSONDecoder().decode(PhotoJson.self, from: data)
+                    completionHandler(photos.response.items)
+                } catch{
+                    print(error)
+                }
+            }
     }
     
     //получение списка групп
-    func getGroups(token : String){
+    func getGroups(token : String, completionHandler: @escaping ([Group])->Void){
         let requestURL = vkURL  + "groups.get"
         let params = ["access_token": token,
-                      "fields": "city,domain",
+                      "extended": "1",
+                      //"fields": "city,domain",
                       "v": "5.103"]
         
          Alamofire.request(requestURL,
                           method: .post,
                           parameters: params)
-            .responseString(completionHandler: { (response) in
-                print("список групп: " + String(response.value!))
-                print(response.error ?? "")
-            })
+             .responseData { (response) in
+                guard let data = response.value else {return}
+                do
+                {
+                    let groups = try JSONDecoder().decode(GroupJson.self, from: data)
+                    completionHandler(groups.response.items)
+                    //print (groups.response.items)
+                } catch{
+                    print(error)
+                }
+            }
     }
     
     //поиск групп по заданной подстроке
-    func searchGroups(token : String, q: String){
+    func searchGroups(token : String, searchText: String, completionHandler: @escaping ([Group])->Void){
         let requestURL = vkURL  + "groups.search"
         let params = ["access_token": token,
-                      "q": q,
+                      "q": searchText,
                       "type": "page",//тип сообщества
                       "v": "5.103"]
         
          Alamofire.request(requestURL,
                           method: .post,
                           parameters: params)
-            .responseString(completionHandler: { (response) in
-                print("поиск групп по подстроке: " + String(response.value!))
-                print(response.error ?? "")
-            })
+            .responseData { (response) in
+                guard let data = response.value else {return}
+                do
+                {
+                    let groups = try JSONDecoder().decode(GroupJson.self, from: data)
+                    completionHandler(groups.response.items)
+                } catch{
+                    print(error)
+                }
+            }
     }
     
 }
