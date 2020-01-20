@@ -37,7 +37,8 @@ class RoundedAvatar : UIControl{
         let imageView = UIButton()//UIImageView(image: UIImage(named: nameImage!))
         let views: [UIView] = [imageView]
         //imageView.setImage(UIImage(named: nameImage!), for: .normal)
-        imageView.loadImageFromUrl(url: nameImage!)
+        
+        imageView.loadImageFromUrl(url_: nameImage!)
         imageView.addTarget(self, action: #selector(clickAvatar(_ :)), for: .touchUpInside)
 
         self.backgroundColor = .clear
@@ -71,9 +72,11 @@ class RoundedAvatar : UIControl{
 
 
 extension UIButton {
-    func loadImageFromUrl(url: String) {
+    func loadImageFromUrl(url_: String) {
+        guard let url = URL(string: url_) else {return}
+        
         DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: URL(string: url)!) {
+            if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self?.setImage(image, for: .normal)

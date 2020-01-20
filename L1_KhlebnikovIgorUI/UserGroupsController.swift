@@ -30,7 +30,7 @@ class UserGroupsController:  UITableViewController {
         super.viewDidLoad()
         vkApi.getGroups(token: Session.shared.token, completionHandler: { (items: [Group]) in
             for group in items{
-                self.groups.append((name: group.name, image: group.photo50))
+                self.groups.append((name: group.name, image: group.photo100))
             }
             self.tableView.reloadData()
         } )

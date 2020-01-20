@@ -26,7 +26,7 @@ struct Group: Codable {
     let isClosed: Int
     let type: String
     let isAdmin, isMember, isAdvertiser: Int
-    let photo50, photo100, photo200: String
+    let photo100/*photo50, , photo200*/: String
 
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -36,9 +36,9 @@ struct Group: Codable {
         case isAdmin = "is_admin"
         case isMember = "is_member"
         case isAdvertiser = "is_advertiser"
-        case photo50 = "photo_50"
+     //   case photo50 = "photo_50"
         case photo100 = "photo_100"
-        case photo200 = "photo_200"
+       // case photo200 = "photo_200"
     }
 }
 

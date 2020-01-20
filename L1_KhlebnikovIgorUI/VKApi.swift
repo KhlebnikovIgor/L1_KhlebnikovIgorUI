@@ -63,7 +63,7 @@ class VKApi{
         let requestURL = vkURL  + "groups.get"
         let params = ["access_token": token,
                       "extended": "1",
-                      //"fields": "city,domain",
+                      "fields": "photo_100",//"city,domain",
                       "v": "5.103"]
         
          Alamofire.request(requestURL,
@@ -75,7 +75,6 @@ class VKApi{
                 {
                     let groups = try JSONDecoder().decode(GroupJson.self, from: data)
                     completionHandler(groups.response.items)
-                    //print (groups.response.items)
                 } catch{
                     print(error)
                 }
