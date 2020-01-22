@@ -9,8 +9,56 @@
 import Foundation
 import Alamofire
 
+
+enum RequestError: Error{
+    case failedRequest(message: String)
+    case decodableError
+}
+
+
 class VKApi{
     let vkURL = "https://api.vk.com/method/"
+    
+    func requestServer<T: Decodable>(requestURL: String,
+                       params: Parameters,
+                       completion: @escaping(Swift.Result<T, Error>) -> Void) {
+        
+        Alamofire.request(requestURL,
+                          method: .post,
+                          parameters: params)
+            .responseData{ (response) in
+                switch response.result {
+                case .failure(let error):
+                    completion(.failure(RequestError.failedRequest(message: error.localizedDescription)))
+                case .success(let data):
+                    do {
+                        let response = try JSONDecoder().decode(T.self, from: data)
+                        completion(.success(response))
+                    } catch let error {
+                        completion(.failure(RequestError.decodableError))
+                    }
+                }
+        }
+    }
+    
+    //получение списка друзей
+    func getFriends(token : String, completion: @escaping (Swift.Result<[User], Error>)->Void){
+        let requestURL = vkURL  + "friends.get"
+        let params = ["access_token": token,
+                      "order": "name",
+                      "fields": "city,domain,photo_100",
+                      "v":"5.103"]
+    
+        requestServer(requestURL: requestURL, params: params) { (users: Swift.Result<UserJson, Error>) in
+            switch users {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let user):
+                completion(.success(user.response.items))
+            }
+        }
+    }
+    
     
     //получение списка друзей
     func getFriends(token : String, completionHandler: @escaping ([User])->Void){
@@ -19,7 +67,7 @@ class VKApi{
                       "order": "name",
                       "fields": "city,domain,photo_100",
                       "v":"5.103"]
-        
+    
          Alamofire.request(requestURL,
                            method: .post,
                            parameters: params)
