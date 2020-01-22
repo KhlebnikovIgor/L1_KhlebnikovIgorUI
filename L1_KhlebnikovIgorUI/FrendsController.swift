@@ -7,32 +7,38 @@
 //
 
 import UIKit
+import Alamofire
 
-//protocol FrendsTableTableViewController {
-//    var frends : NSDictionary! {get set}
-//    var frendSectionTitles : NSArray! {get set}
-//    //var frendIndexTitles : NSArray! {get set}
-//}
 
 class FrendsController:  UITableViewController, UISearchBarDelegate {
     
     let frendIndexTitles = ["А","Б","В","Г","Д","Е","Ж","З","И","К","Л","М"]
     
-    //let frendSectionTitles = ["В","П","К","С"]
-
-    var frends :[(title: String,[(name: String, image: String)])] =
-        [
+   var vkApi = VKApi()
+   // var frends = Dictionary<String,[(name: String, image: String)]>()
+   
+    var frends : [(title: String,[(name: String, image: String)])] = []
+   /*     [
             ("В",[("Ваня", "1"),("Вадим", "3")]),
             ("П",[("Петя", "2")]),
             ("К",[("Коля", "3"),("Клим","4")]),
             ("С",[("Саша", "4"),("Соня","2"),("Семен","1")])
         ]
-    
-    var filteredFrends :[(title: String,[(name: String, image: String)])]!
+    */
+    var filteredFrends:[(title: String,[(name: String, image: String)])]!
+   // var filteredFrends: Dictionary<String,[(name: String, image: String)]>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        filteredFrends = frends
+        vkApi.getFriends(token: Session.shared.token, completionHandler: { (users: [User]) in
+            for user in users{
+                //self.frends.f["Д"]?.append(<#T##newElement: (name: String, image: String)##(name: String, image: String)#>)
+                self.frends.append((title: String(user.firstName[user.firstName.startIndex]),
+                                    [(name: user.firstName, image: user.photo100 ?? "")]))
+            }
+            self.filteredFrends = self.frends
+            self.tableView.reloadData()
+        } )
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -41,11 +47,12 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
     
     //******
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.filteredFrends[section].title//frendSectionTitles[section]
+        return String(self.filteredFrends[section].title)//frendSectionTitles[section]
     }
     //******
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.filteredFrends.count//frendSectionTitles.count
+        guard let _ = self.filteredFrends else {return 0}
+        return self.filteredFrends.count //frendSectionTitles.count
     }
     //******
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,3 +104,4 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
     }
 
 }
+

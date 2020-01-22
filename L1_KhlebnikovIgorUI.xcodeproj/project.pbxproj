@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,10 +26,17 @@
 		7871A6CA23308F4A002F0E74 /* RoundedAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7871A6C923308F4A002F0E74 /* RoundedAvatar.swift */; };
 		78BF938F2353682500444FC9 /* LikedCounterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF938E2353682500444FC9 /* LikedCounterControl.swift */; };
 		78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */; };
-		7B57AE7323CC4974007B017F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B57AE7223CC4974007B017F /* Session.swift */; };
+		7B57AE9623CEE2D2007B017F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B57AE9523CEE2D2007B017F /* Session.swift */; };
+		7BAACF2123CEFF72003BE01A /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAACF2023CEFF72003BE01A /* VKApi.swift */; };
+		7BE54A0023D1B83D00F49BA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE549FF23D1B83D00F49BA4 /* User.swift */; };
+		7BE54A0223D1CE0600F49BA4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE54A0123D1CE0600F49BA4 /* Photo.swift */; };
+		7BE54A0423D1D12000F49BA4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE54A0323D1D12000F49BA4 /* Group.swift */; };
+		E0BDA920D1A83662142ECDD7 /* Pods_L1_KhlebnikovIgorUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6605B593753947368833BB96 /* Pods_L1_KhlebnikovIgorUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CB9D97A6D63244CF006847A /* Pods-L1_KhlebnikovIgorUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L1_KhlebnikovIgorUI.release.xcconfig"; path = "Target Support Files/Pods-L1_KhlebnikovIgorUI/Pods-L1_KhlebnikovIgorUI.release.xcconfig"; sourceTree = "<group>"; };
+		6605B593753947368833BB96 /* Pods_L1_KhlebnikovIgorUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_L1_KhlebnikovIgorUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7808F852235244B900A696B1 /* NewsLineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLineController.swift; sourceTree = "<group>"; };
 		7808F8542352479700A696B1 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		7808F8562352495600A696B1 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
@@ -51,7 +58,12 @@
 		7871A6C923308F4A002F0E74 /* RoundedAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedAvatar.swift; sourceTree = "<group>"; usesTabs = 0; };
 		78BF938E2353682500444FC9 /* LikedCounterControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCounterControl.swift; sourceTree = "<group>"; };
 		78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryController.swift; sourceTree = "<group>"; };
-		7B57AE7223CC4974007B017F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		7B57AE9523CEE2D2007B017F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		7BAACF2023CEFF72003BE01A /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
+		7BE549FF23D1B83D00F49BA4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7BE54A0123D1CE0600F49BA4 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		7BE54A0323D1D12000F49BA4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		A1FB42D4F9556466C92C637B /* Pods-L1_KhlebnikovIgorUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L1_KhlebnikovIgorUI.debug.xcconfig"; path = "Target Support Files/Pods-L1_KhlebnikovIgorUI/Pods-L1_KhlebnikovIgorUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,16 +71,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0BDA920D1A83662142ECDD7 /* Pods_L1_KhlebnikovIgorUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26B6DFED47F612C014B0FB92 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1FB42D4F9556466C92C637B /* Pods-L1_KhlebnikovIgorUI.debug.xcconfig */,
+				4CB9D97A6D63244CF006847A /* Pods-L1_KhlebnikovIgorUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7823611C232BEEE900A3A46D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				7B57AE7123CC47D9007B017F /* Model */,
+				7BAACF1F23CEFC29003BE01A /* Utils */,
+				7B57AE9423CEE108007B017F /* Model */,
 				7823612C232C70FA00A3A46D /* Cells */,
 				783C78E9232AF1A400FF27AD /* AppDelegate.swift */,
 				78236121232BF0C600A3A46D /* Views */,
@@ -128,6 +151,8 @@
 			children = (
 				783C78E8232AF1A400FF27AD /* L1_KhlebnikovIgorUI */,
 				783C78E7232AF1A400FF27AD /* Products */,
+				26B6DFED47F612C014B0FB92 /* Pods */,
+				8B717FDF71B08B65FE751321 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,12 +174,31 @@
 			path = L1_KhlebnikovIgorUI;
 			sourceTree = "<group>";
 		};
-		7B57AE7123CC47D9007B017F /* Model */ = {
+		7B57AE9423CEE108007B017F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7B57AE7223CC4974007B017F /* Session.swift */,
+				7B57AE9523CEE2D2007B017F /* Session.swift */,
+				7BE549FF23D1B83D00F49BA4 /* User.swift */,
+				7BE54A0123D1CE0600F49BA4 /* Photo.swift */,
+				7BE54A0323D1D12000F49BA4 /* Group.swift */,
 			);
-			path = Model;
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7BAACF1F23CEFC29003BE01A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7BAACF2023CEFF72003BE01A /* VKApi.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		8B717FDF71B08B65FE751321 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6605B593753947368833BB96 /* Pods_L1_KhlebnikovIgorUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 783C78F8232AF1AD00FF27AD /* Build configuration list for PBXNativeTarget "L1_KhlebnikovIgorUI" */;
 			buildPhases = (
+				A3A359A415D8C885E283CA31 /* [CP] Check Pods Manifest.lock */,
 				783C78E2232AF1A400FF27AD /* Sources */,
 				783C78E3232AF1A400FF27AD /* Frameworks */,
 				783C78E4232AF1A400FF27AD /* Resources */,
+				E923411E0EF1AE41679E82DC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -224,6 +270,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A3A359A415D8C885E283CA31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-L1_KhlebnikovIgorUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E923411E0EF1AE41679E82DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-L1_KhlebnikovIgorUI/Pods-L1_KhlebnikovIgorUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-L1_KhlebnikovIgorUI/Pods-L1_KhlebnikovIgorUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-L1_KhlebnikovIgorUI/Pods-L1_KhlebnikovIgorUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		783C78E2232AF1A400FF27AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -232,6 +320,7 @@
 				78236127232C666E00A3A46D /* UserGroupsController.swift in Sources */,
 				7808F853235244B900A696B1 /* NewsLineController.swift in Sources */,
 				7823612E232C712800A3A46D /* FrendTableCell.swift in Sources */,
+				7BE54A0423D1D12000F49BA4 /* Group.swift in Sources */,
 				78236132232C7A7900A3A46D /* GroupTableCell.swift in Sources */,
 				7808F8572352495600A696B1 /* NewsCell.swift in Sources */,
 				7823612B232C691200A3A46D /* AboutAFrendController.swift in Sources */,
@@ -241,7 +330,10 @@
 				783C78FC232AF24C00FF27AD /* LoginFormController.swift in Sources */,
 				7871A6CA23308F4A002F0E74 /* RoundedAvatar.swift in Sources */,
 				78236123232C62E900A3A46D /* FrendsController.swift in Sources */,
-				7B57AE7323CC4974007B017F /* Session.swift in Sources */,
+				7BE54A0223D1CE0600F49BA4 /* Photo.swift in Sources */,
+				7B57AE9623CEE2D2007B017F /* Session.swift in Sources */,
+				7BAACF2123CEFF72003BE01A /* VKApi.swift in Sources */,
+				7BE54A0023D1B83D00F49BA4 /* User.swift in Sources */,
 				78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */,
 				78236130232C78D000A3A46D /* FrendCollectionCell.swift in Sources */,
 				7871A6C823307AE5002F0E74 /* LikedControl.swift in Sources */,
@@ -388,6 +480,7 @@
 		};
 		783C78F9232AF1AD00FF27AD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1FB42D4F9556466C92C637B /* Pods-L1_KhlebnikovIgorUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -406,6 +499,7 @@
 		};
 		783C78FA232AF1AD00FF27AD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CB9D97A6D63244CF006847A /* Pods-L1_KhlebnikovIgorUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

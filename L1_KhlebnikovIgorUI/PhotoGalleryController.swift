@@ -14,10 +14,12 @@ enum MoveTo{
 }
 
 class PhotoGalleryController : UIViewController{
+    var vkApi = VKApi()
     
     @IBOutlet weak var image: UIImageView!
     var imageIndex = 0
-    let imageList = ["2","3","1","4"]
+    //let imageList = ["2","3","1","4"]
+    var imageList = [String]()
     var maxImages = 0
     let panGestureRecognizer = UIPanGestureRecognizer()
     var began: Float!
@@ -26,7 +28,13 @@ class PhotoGalleryController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        maxImages = imageList.count
+        vkApi.getPhotos(token: Session.shared.token, completionHandler: { (items: [Photo]) in
+            for photo in items{
+                self.imageList.append(photo.sizes[3].url)
+            }
+            self.maxImages = self.imageList.count
+        } )
+        
         image.image = UIImage(named: "2")
         panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
         panGestureRecognizer.maximumNumberOfTouches = 1
