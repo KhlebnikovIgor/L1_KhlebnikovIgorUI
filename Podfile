@@ -6,6 +6,7 @@ target 'L1_KhlebnikovIgorUI' do
   use_frameworks!
 
 pod 'Alamofire'
+pod 'RealmSwift'
 
   # Pods for L1_KhlebnikovIgorUI
 

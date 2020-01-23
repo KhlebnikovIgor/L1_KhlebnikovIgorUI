@@ -28,12 +28,18 @@ class PhotoGalleryController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vkApi.getPhotos(token: Session.shared.token, completionHandler: { (items: [Photo]) in
-            for photo in items{
-                self.imageList.append(photo.sizes[3].url)
+        
+        vkApi.getPhotos(token: Session.shared.token) { result in
+           switch result {
+              case  .success(let photos):
+                    for photo in photos {
+                        self.imageList.append(photo.sizes[3].url)
+                    }
+                    self.maxImages = self.imageList.count
+              case .failure(let error):
+                print(error.localizedDescription)
+              }
             }
-            self.maxImages = self.imageList.count
-        } )
         
         image.image = UIImage(named: "2")
         panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))

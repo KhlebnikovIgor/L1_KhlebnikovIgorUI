@@ -58,98 +58,59 @@ class VKApi{
             }
         }
     }
-    
-    
-    //получение списка друзей
-    func getFriends(token : String, completionHandler: @escaping ([User])->Void){
-        let requestURL = vkURL  + "friends.get"
-        let params = ["access_token": token,
-                      "order": "name",
-                      "fields": "city,domain,photo_100",
-                      "v":"5.103"]
-    
-         Alamofire.request(requestURL,
-                           method: .post,
-                           parameters: params)
-            .responseData { (response) in
-                guard let data = response.value else {return}
-                do
-                {
-                    let users = try JSONDecoder().decode(UserJson.self, from: data)
-                    completionHandler(users.response.items)
-                } catch{
-                    print(error)
-                }
-            }
-    }
-    
-   
+  
+  
     //получение списка фотографий
-    func getPhotos(token : String, completionHandler: @escaping ([Photo])->Void){
+    func getPhotos(token : String, completion: @escaping (Swift.Result<[Photo], Error>)->Void){
         let requestURL = vkURL  + "photos.get"
         let params = ["access_token": token,
                       "album_id": "wall",
                       "v": "5.103"]
         
-         Alamofire.request(requestURL,
-                          method: .post,
-                          parameters: params)
-            .responseData { (response) in
-                guard let data = response.value else {return}
-                do
-                {
-                    let photos = try JSONDecoder().decode(PhotoJson.self, from: data)
-                    completionHandler(photos.response.items)
-                } catch{
-                    print(error)
-                }
+        requestServer(requestURL: requestURL, params: params) { (photos: Swift.Result<PhotoJson, Error>) in
+            switch photos {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let photo):
+                completion(.success(photo.response.items))
             }
+        }
     }
     
     //получение списка групп
-    func getGroups(token : String, completionHandler: @escaping ([Group])->Void){
+    func getGroups(token : String, completion: @escaping (Swift.Result<[Group], Error>)->Void){
         let requestURL = vkURL  + "groups.get"
         let params = ["access_token": token,
                       "extended": "1",
                       "fields": "photo_100",//"city,domain",
                       "v": "5.103"]
         
-         Alamofire.request(requestURL,
-                          method: .post,
-                          parameters: params)
-             .responseData { (response) in
-                guard let data = response.value else {return}
-                do
-                {
-                    let groups = try JSONDecoder().decode(GroupJson.self, from: data)
-                    completionHandler(groups.response.items)
-                } catch{
-                    print(error)
-                }
+        requestServer(requestURL: requestURL, params: params) { (groups: Swift.Result<GroupJson, Error>) in
+            switch groups {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let group):
+                completion(.success(group.response.items))
             }
-    }
+        }
+  }
     
     //поиск групп по заданной подстроке
-    func searchGroups(token : String, searchText: String, completionHandler: @escaping ([Group])->Void){
+    func searchGroups(token : String, searchText: String, completion: @escaping (Swift.Result<[Group], Error>)->Void){
         let requestURL = vkURL  + "groups.search"
         let params = ["access_token": token,
                       "q": searchText,
                       "type": "page",//тип сообщества
                       "v": "5.103"]
         
-         Alamofire.request(requestURL,
-                          method: .post,
-                          parameters: params)
-            .responseData { (response) in
-                guard let data = response.value else {return}
-                do
-                {
-                    let groups = try JSONDecoder().decode(GroupJson.self, from: data)
-                    completionHandler(groups.response.items)
-                } catch{
-                    print(error)
-                }
+        requestServer(requestURL: requestURL, params: params) { (groups: Swift.Result<GroupJson, Error>) in
+            switch groups {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let group):
+                completion(.success(group.response.items))
             }
+        }
     }
     
 }

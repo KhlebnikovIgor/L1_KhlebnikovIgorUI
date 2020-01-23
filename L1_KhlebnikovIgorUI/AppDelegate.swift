@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let realmRepository = UsersRepositoryRealm()
+        let user = realmRepository.getUser(id: 0)
+            print(user)
+        realmRepository.addUser(firstName: "Саша", lastName: "Данилов", photo100: "https:\\..."/*, city: CityRealm( 0,  "Самара")*/)
+        let userNew = realmRepository.getUser(id: 0)
+            print(userNew)
+        
         return true
     }
 
