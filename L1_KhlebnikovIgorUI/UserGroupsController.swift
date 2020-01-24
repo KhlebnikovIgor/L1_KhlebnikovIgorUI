@@ -28,12 +28,18 @@ class UserGroupsController:  UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vkApi.getGroups(token: Session.shared.token, completionHandler: { (items: [Group]) in
-            for group in items{
-                self.groups.append((name: group.name, image: group.photo100))
+        
+        vkApi.getGroups(token: Session.shared.token) { result in
+           switch result {
+              case  .success(let groups):
+                    for group in groups {
+                        self.groups.append((name: group.name, image: group.photo100))
+                    }
+                    self.tableView.reloadData()
+              case .failure(let error):
+                print(error.localizedDescription)
+              }
             }
-            self.tableView.reloadData()
-        } )
     }
     
     // MARK: - Table view data source

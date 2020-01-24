@@ -8,14 +8,7 @@
 
 import Foundation
 
-struct UserJson: Codable {
-    let response: ResponseUsers
-}
 
-struct ResponseUsers: Codable {
-    let count: Int
-    let items: [User]
-}
 
 struct User: Codable {
     let id: Int
