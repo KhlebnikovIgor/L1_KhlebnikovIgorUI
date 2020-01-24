@@ -44,7 +44,7 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
         vkApi.getFriends(token: Session.shared.token) { result in
             switch result {
             case  .success(let users):
-                self.allFrends = users.filter($0.deactivated == nil)
+                //self.allFrends = users.filter($0.deactivated == nil)
                 
                 for user in users {
                     
