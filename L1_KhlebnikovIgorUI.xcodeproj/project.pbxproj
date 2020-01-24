@@ -28,6 +28,7 @@
 		78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */; };
 		7B57AE9623CEE2D2007B017F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B57AE9523CEE2D2007B017F /* Session.swift */; };
 		7BAACF2123CEFF72003BE01A /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAACF2023CEFF72003BE01A /* VKApi.swift */; };
+		7BC8F3E823DAB57100E3E25F /* CommonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8F3E723DAB57100E3E25F /* CommonResponse.swift */; };
 		7BCFAA2623D85CF0000F1282 /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFAA2523D85CF0000F1282 /* UserRealm.swift */; };
 		7BCFAA2823D8695B000F1282 /* GroupRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFAA2723D8695B000F1282 /* GroupRealm.swift */; };
 		7BCFAA2A23D86D2B000F1282 /* PhotoRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFAA2923D86D2B000F1282 /* PhotoRealm.swift */; };
@@ -63,6 +64,7 @@
 		78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryController.swift; sourceTree = "<group>"; };
 		7B57AE9523CEE2D2007B017F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		7BAACF2023CEFF72003BE01A /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
+		7BC8F3E723DAB57100E3E25F /* CommonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponse.swift; sourceTree = "<group>"; };
 		7BCFAA2523D85CF0000F1282 /* UserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
 		7BCFAA2723D8695B000F1282 /* GroupRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRealm.swift; sourceTree = "<group>"; };
 		7BCFAA2923D86D2B000F1282 /* PhotoRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRealm.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				7BCFAA2523D85CF0000F1282 /* UserRealm.swift */,
 				7BCFAA2723D8695B000F1282 /* GroupRealm.swift */,
 				7BCFAA2923D86D2B000F1282 /* PhotoRealm.swift */,
+				7BC8F3E723DAB57100E3E25F /* CommonResponse.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */,
 				78236130232C78D000A3A46D /* FrendCollectionCell.swift in Sources */,
 				7871A6C823307AE5002F0E74 /* LikedControl.swift in Sources */,
+				7BC8F3E823DAB57100E3E25F /* CommonResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

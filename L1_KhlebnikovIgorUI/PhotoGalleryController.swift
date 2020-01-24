@@ -30,16 +30,16 @@ class PhotoGalleryController : UIViewController{
         super.viewDidLoad()
         
         vkApi.getPhotos(token: Session.shared.token) { result in
-           switch result {
-              case  .success(let photos):
-                    for photo in photos {
-                        self.imageList.append(photo.sizes[3].url)
-                    }
-                    self.maxImages = self.imageList.count
-              case .failure(let error):
+            switch result {
+            case  .success(let photos):
+                for photo in photos {
+                    self.imageList.append(photo.sizes[3].url)
+                }
+                self.maxImages = self.imageList.count
+            case .failure(let error):
                 print(error.localizedDescription)
-              }
             }
+        }
         
         image.image = UIImage(named: "2")
         panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
@@ -56,7 +56,7 @@ class PhotoGalleryController : UIViewController{
             start = true
             
         case .changed:
-          let translation = recognizer.translation(in: self.view)
+            let translation = recognizer.translation(in: self.view)
             if began-Float(translation.x) > 0 {
                 //left swipe
                 if start {
@@ -76,11 +76,11 @@ class PhotoGalleryController : UIViewController{
             let gesturePoint = recognizer.translation(in: view)
             if abs(began - Float(gesturePoint.x)) > 100 {
                 if began - Float(gesturePoint.x) > 0 {
-                //left
-                changePhoto(moveTo: .left)
+                    //left
+                    changePhoto(moveTo: .left)
                 }else{
-                //right
-                changePhoto(moveTo: .right)
+                    //right
+                    changePhoto(moveTo: .right)
                 }
             }
             interactiveAnimator.stopAnimation(true)
@@ -92,7 +92,7 @@ class PhotoGalleryController : UIViewController{
         case .failed, .possible:
             start = false
         @unknown default:
-                    break
+            break
         }
     }
     

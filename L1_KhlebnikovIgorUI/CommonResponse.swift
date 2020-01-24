@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+struct CommonResponse<T: Decodable> : Decodable{
+    var response: CommonResponseArray<T>
+}
+
+struct CommonResponseArray<T: Decodable> : Decodable{
+    var count: Int
+    var items: [T]
+}
