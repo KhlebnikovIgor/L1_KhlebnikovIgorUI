@@ -28,6 +28,10 @@
 		78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */; };
 		7B57AE9623CEE2D2007B017F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B57AE9523CEE2D2007B017F /* Session.swift */; };
 		7BAACF2123CEFF72003BE01A /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAACF2023CEFF72003BE01A /* VKApi.swift */; };
+		7BC8F3E823DAB57100E3E25F /* CommonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8F3E723DAB57100E3E25F /* CommonResponse.swift */; };
+		7BCFAA2623D85CF0000F1282 /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFAA2523D85CF0000F1282 /* UserRealm.swift */; };
+		7BCFAA2823D8695B000F1282 /* GroupRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFAA2723D8695B000F1282 /* GroupRealm.swift */; };
+		7BCFAA2A23D86D2B000F1282 /* PhotoRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFAA2923D86D2B000F1282 /* PhotoRealm.swift */; };
 		7BE54A0023D1B83D00F49BA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE549FF23D1B83D00F49BA4 /* User.swift */; };
 		7BE54A0223D1CE0600F49BA4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE54A0123D1CE0600F49BA4 /* Photo.swift */; };
 		7BE54A0423D1D12000F49BA4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE54A0323D1D12000F49BA4 /* Group.swift */; };
@@ -60,6 +64,10 @@
 		78EFD780234E072700AE8E75 /* PhotoGalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryController.swift; sourceTree = "<group>"; };
 		7B57AE9523CEE2D2007B017F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		7BAACF2023CEFF72003BE01A /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
+		7BC8F3E723DAB57100E3E25F /* CommonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponse.swift; sourceTree = "<group>"; };
+		7BCFAA2523D85CF0000F1282 /* UserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
+		7BCFAA2723D8695B000F1282 /* GroupRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRealm.swift; sourceTree = "<group>"; };
+		7BCFAA2923D86D2B000F1282 /* PhotoRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRealm.swift; sourceTree = "<group>"; };
 		7BE549FF23D1B83D00F49BA4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7BE54A0123D1CE0600F49BA4 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		7BE54A0323D1D12000F49BA4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -181,6 +189,10 @@
 				7BE549FF23D1B83D00F49BA4 /* User.swift */,
 				7BE54A0123D1CE0600F49BA4 /* Photo.swift */,
 				7BE54A0323D1D12000F49BA4 /* Group.swift */,
+				7BCFAA2523D85CF0000F1282 /* UserRealm.swift */,
+				7BCFAA2723D8695B000F1282 /* GroupRealm.swift */,
+				7BCFAA2923D86D2B000F1282 /* PhotoRealm.swift */,
+				7BC8F3E723DAB57100E3E25F /* CommonResponse.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -324,19 +336,23 @@
 				78236132232C7A7900A3A46D /* GroupTableCell.swift in Sources */,
 				7808F8572352495600A696B1 /* NewsCell.swift in Sources */,
 				7823612B232C691200A3A46D /* AboutAFrendController.swift in Sources */,
+				7BCFAA2A23D86D2B000F1282 /* PhotoRealm.swift in Sources */,
 				78BF938F2353682500444FC9 /* LikedCounterControl.swift in Sources */,
 				783C78EA232AF1A400FF27AD /* AppDelegate.swift in Sources */,
 				78236129232C66B300A3A46D /* AllGroupsController.swift in Sources */,
 				783C78FC232AF24C00FF27AD /* LoginFormController.swift in Sources */,
 				7871A6CA23308F4A002F0E74 /* RoundedAvatar.swift in Sources */,
+				7BCFAA2623D85CF0000F1282 /* UserRealm.swift in Sources */,
 				78236123232C62E900A3A46D /* FrendsController.swift in Sources */,
 				7BE54A0223D1CE0600F49BA4 /* Photo.swift in Sources */,
+				7BCFAA2823D8695B000F1282 /* GroupRealm.swift in Sources */,
 				7B57AE9623CEE2D2007B017F /* Session.swift in Sources */,
 				7BAACF2123CEFF72003BE01A /* VKApi.swift in Sources */,
 				7BE54A0023D1B83D00F49BA4 /* User.swift in Sources */,
 				78EFD781234E072700AE8E75 /* PhotoGalleryController.swift in Sources */,
 				78236130232C78D000A3A46D /* FrendCollectionCell.swift in Sources */,
 				7871A6C823307AE5002F0E74 /* LikedControl.swift in Sources */,
+				7BC8F3E823DAB57100E3E25F /* CommonResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
