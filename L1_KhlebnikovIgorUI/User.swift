@@ -12,29 +12,32 @@ import Foundation
 
 struct User: Codable {
     let id: Int
-    let firstName, lastName: String
-    let isClosed, canAccessClosed: Bool?
-    let domain: String
-    let online: Int
-    let trackCode: String
+    let firstName: String
+    let lastName: String
+   // let isClosed, canAccessClosed: Bool?
+//    let domain: String
+    let isOnline: Int
+//    let trackCode: String
     let deactivated: String?
-    let city: City?
-    let photo100: String?
+//    let city: City?
+    let avatarPath: String?
 
     enum CodingKeys: String, CodingKey {
         case id
         case firstName = "first_name"
         case lastName = "last_name"
-        case isClosed = "is_closed"
-        case canAccessClosed = "can_access_closed"
-        case domain, online
-        case trackCode = "track_code"
-        case deactivated, city
-        case photo100 = "photo_100"
+//        case isClosed = "is_closed"
+//        case canAccessClosed = "can_access_closed"
+        case  isOnline = "online"
+//        domain,
+//        case trackCode = "track_code"
+        case deactivated
+//        , city
+        case avatarPath = "photo_100"
     }
 }
 
-struct City: Codable {
-    let id: Int
-    let title: String
-}
+//struct City: Codable {
+//    let id: Int
+//    let title: String
+//}

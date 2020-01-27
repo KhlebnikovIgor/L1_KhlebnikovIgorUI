@@ -15,17 +15,41 @@ struct Section<T>{
     var items: [T]
 }
 
+protocol FriendListPreseneter {
+    func getFriendList(completion: @escaping(Swift.Result<[User], Error>)->())
+}
+
+class FriendListPresenterImplementation/*<T: Repository>*/ : FriendListPreseneter{
+    
+    
+    let vkAPI: VKApi
+    let database: FriendRepository
+    
+    init(database: FriendRepository, api: VKApi) {
+        self.vkAPI = api
+        self.database = database
+    }
+    
+    func getFriendList(completion: @escaping(Swift.Result<[User], Error>)->()) {
+        vkAPI.getFriends(token: Session.shared.token) { result in
+            switch result {
+            case  .success(let users):
+                //users.forEach{ self.database.create(entity: $0) }
+                completion(.success(users))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
 class FrendsController:  UITableViewController, UISearchBarDelegate {
     
-    let frendIndexTitles = ["А","Б","В","Г","Д","Е","Ж","З","И","К","Л","М"]
-    
-    var vkApi = VKApi()
+    var presenter = FriendListPresenterImplementation(database: FriendRepository(stack: CoreDataStack.shared), api: VKApi())
     private var allFrends = [User]()
     private var frendsSection = [Section<User>]()
-    // var frends = Dictionary<String,[(name: String, image: String)]>()
-    //    var frends = [Section]()
     
-    var frends : [(title: String, frends: [(name: String, image: String)])] = []
+    //    var frends : [(title: String, frends: [(name: String, image: String)])] = []
     //        [
     //            ("В",[("Ваня", "1"),("Вадим", "3")]),
     //            ("П",[("Петя", "2")]),
@@ -33,27 +57,22 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
     //            ("С",[("Саша", "4"),("Соня","2"),("Семен","1")])
     //        ]
     
-    var filteredFrends:[(title: String, frends: [(name: String, image: String)])]!
-    // var filteredFrends: Dictionary<String,[(name: String, image: String)]>!
-    //    var filteredFrends: [Section]!
+    //    var filteredFrends:[(title: String, frends: [(name: String, image: String)])]!
     
+    var filteredFrends: [Section<User>]!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        vkApi.getFriends(token: Session.shared.token) { result in
+    private func friendsRequest(){
+        presenter.getFriendList{result in
             switch result {
             case  .success(let users):
-                //self.allFrends = users.filter($0.deactivated == nil)
-                
-                for user in users {
-                    
-                    self.frends.append((title: String(user.firstName[user.firstName.startIndex]),
-                                        frends: [(name: user.firstName, image: user.photo100 ?? "")]))
-                    //                        self.frends.append((title: String(user.firstName[user.firstName.startIndex]),
-                    //                                        [(name: user.firstName, image: user.photo100 ?? "")]))
+                self.allFrends = users
+                let friendDictionary = Dictionary.init(grouping: users) {
+                    $0.firstName.prefix(1)
                 }
-                self.filteredFrends = self.frends
+                self.frendsSection = friendDictionary.map{Section(title: String($0.key), items: $0.value)}
+                self.frendsSection.sort{$0.title < $1.title}
+                self.filteredFrends = self.frendsSection
+                
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -61,32 +80,35 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        friendsRequest()
+    }
+    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return frendIndexTitles
+        return filteredFrends?.map( {$0.title})
     }
     
     //******
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(self.filteredFrends[section].title)//frendSectionTitles[section]
+        return filteredFrends[section].title
     }
     //******
     override func numberOfSections(in tableView: UITableView) -> Int {
         guard let _ = self.filteredFrends else {return 0}
-        return self.filteredFrends.count //frendSectionTitles.count
+        return filteredFrends.count
     }
     //******
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  filteredFrends[section].frends.count//frends ->1
+        return  filteredFrends[section ].items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "frendCell", for: indexPath) as! FrendTableCell
-        cell.nameFrend.text = filteredFrends[indexPath.section].frends[indexPath.row].name//frends ->1
-        cell.photoFrend.nameImage = filteredFrends[indexPath.section].frends[indexPath.row].image //frends ->1
+        cell.nameFrend.text = filteredFrends[indexPath.section].items[indexPath.row].firstName
+        cell.photoFrend.nameImage = filteredFrends[indexPath.section].items[indexPath.row].avatarPath
         return cell
     }
-    //
-    // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -106,23 +128,18 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
             let index = tableView.indexPathForSelectedRow?.row ?? 0
             let section = tableView.indexPathForSelectedRow?.section ?? 0
             if filteredFrends.count > index {
-                destinationController.navigationItem.title = filteredFrends[section].frends[index].name//frends -> 1
-                destinationController.nameFrend = filteredFrends[section].frends[index].name
-                destinationController.photoFrend = filteredFrends[section].frends[index].image
+                destinationController.navigationItem.title = filteredFrends[section].items[index].firstName
+                destinationController.nameFrend = filteredFrends[section].items[index].firstName
+                destinationController.photoFrend = filteredFrends[section].items[index].avatarPath
             }
         }
     }
     
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredFrends = searchText.isEmpty ? frends : frends.filter { (arg: (title: String, frends: [(name: String, image: String)])) -> Bool in
-            //        let (title, _ ) = arg
-            //            print(title + "********************************")
-            let (name, _) = arg
-            return name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        filteredFrends = searchText.isEmpty ? frendsSection : frendsSection.filter {
+            !$0.items.filter{ ($0.firstName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil ) }.isEmpty
         }
-        //
-        //        let aa: String
-        //        aa.
         
         tableView.reloadData()
     }
