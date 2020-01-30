@@ -12,19 +12,22 @@ import Alamofire
 
 enum RequestError: Error{
     case failedRequest(message: String)
-    case decodableError
+    case decodableError(message: String)
 }
 
 
 class VKApi{
     let vkURL = "https://api.vk.com/method/"
     
+    typealias Out = Swift.Result
+    
     func requestServer<T: Decodable>(requestURL: String,
-                       params: Parameters,
-                       completion: @escaping(Swift.Result<T, Error>) -> Void) {
+                                     method: HTTPMethod = .get,
+                                     params: Parameters,
+                                     completion: @escaping(Out<[T], Error>) -> Void) {
         
         Alamofire.request(requestURL,
-                          method: .post,
+                          method: method,
                           parameters: params)
             .responseData{ (response) in
                 switch response.result {
@@ -32,124 +35,57 @@ class VKApi{
                     completion(.failure(RequestError.failedRequest(message: error.localizedDescription)))
                 case .success(let data):
                     do {
-                        let response = try JSONDecoder().decode(T.self, from: data)
-                        completion(.success(response))
+                        let result = try JSONDecoder().decode(CommonResponse<T>.self, from: data)
+                        completion(.success(result.response.items))
                     } catch let error {
-                        completion(.failure(RequestError.decodableError))
+                        completion(.failure(RequestError.decodableError(message: error.localizedDescription)))
                     }
                 }
         }
     }
     
     //получение списка друзей
-    func getFriends(token : String, completion: @escaping (Swift.Result<[User], Error>)->Void){
+    func getFriends(token : String, completion: @escaping(Out<[User], Error>) -> Void ){
         let requestURL = vkURL  + "friends.get"
         let params = ["access_token": token,
                       "order": "name",
                       "fields": "city,domain,photo_100",
                       "v":"5.103"]
-    
-        requestServer(requestURL: requestURL, params: params) { (users: Swift.Result<UserJson, Error>) in
-            switch users {
-            case .failure(let error):
-                completion(.failure(error))
-            case .success(let user):
-                completion(.success(user.response.items))
-            }
-        }
+        
+        requestServer(requestURL: requestURL, method: .post, params: params) {completion($0)}
     }
     
     
-    //получение списка друзей
-    func getFriends(token : String, completionHandler: @escaping ([User])->Void){
-        let requestURL = vkURL  + "friends.get"
-        let params = ["access_token": token,
-                      "order": "name",
-                      "fields": "city,domain,photo_100",
-                      "v":"5.103"]
-    
-         Alamofire.request(requestURL,
-                           method: .post,
-                           parameters: params)
-            .responseData { (response) in
-                guard let data = response.value else {return}
-                do
-                {
-                    let users = try JSONDecoder().decode(UserJson.self, from: data)
-                    completionHandler(users.response.items)
-                } catch{
-                    print(error)
-                }
-            }
-    }
-    
-   
     //получение списка фотографий
-    func getPhotos(token : String, completionHandler: @escaping ([Photo])->Void){
+    func getPhotos(token : String, completion: @escaping (Out<[Photo], Error>)->Void){
         let requestURL = vkURL  + "photos.get"
         let params = ["access_token": token,
                       "album_id": "wall",
                       "v": "5.103"]
         
-         Alamofire.request(requestURL,
-                          method: .post,
-                          parameters: params)
-            .responseData { (response) in
-                guard let data = response.value else {return}
-                do
-                {
-                    let photos = try JSONDecoder().decode(PhotoJson.self, from: data)
-                    completionHandler(photos.response.items)
-                } catch{
-                    print(error)
-                }
-            }
+        requestServer(requestURL: requestURL, method: .post, params: params) {completion($0)}
     }
     
     //получение списка групп
-    func getGroups(token : String, completionHandler: @escaping ([Group])->Void){
+    func getGroups(token : String, completion: @escaping (Out<[Group], Error>)->Void){
         let requestURL = vkURL  + "groups.get"
         let params = ["access_token": token,
                       "extended": "1",
                       "fields": "photo_100",//"city,domain",
-                      "v": "5.103"]
+            "v": "5.103"]
         
-         Alamofire.request(requestURL,
-                          method: .post,
-                          parameters: params)
-             .responseData { (response) in
-                guard let data = response.value else {return}
-                do
-                {
-                    let groups = try JSONDecoder().decode(GroupJson.self, from: data)
-                    completionHandler(groups.response.items)
-                } catch{
-                    print(error)
-                }
-            }
+        requestServer(requestURL: requestURL, method: .post, params: params) {completion($0)}
     }
     
     //поиск групп по заданной подстроке
-    func searchGroups(token : String, searchText: String, completionHandler: @escaping ([Group])->Void){
+    func searchGroups(token : String, searchText: String, completion: @escaping (Out<[Group], Error>)->Void){
         let requestURL = vkURL  + "groups.search"
         let params = ["access_token": token,
                       "q": searchText,
                       "type": "page",//тип сообщества
-                      "v": "5.103"]
+            "v": "5.103"]
         
-         Alamofire.request(requestURL,
-                          method: .post,
-                          parameters: params)
-            .responseData { (response) in
-                guard let data = response.value else {return}
-                do
-                {
-                    let groups = try JSONDecoder().decode(GroupJson.self, from: data)
-                    completionHandler(groups.response.items)
-                } catch{
-                    print(error)
-                }
-            }
+        requestServer(requestURL: requestURL, method: .post, params: params) {completion($0)}
     }
     
 }
