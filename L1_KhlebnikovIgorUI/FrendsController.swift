@@ -15,64 +15,28 @@ struct Section<T>{
     var items: [T]
 }
 
-protocol FriendListPreseneter {
-    func getFriendList(completion: @escaping(Swift.Result<[User], Error>)->())
-}
-
-class FriendListPresenterImplementation/*<T: Repository>*/ : FriendListPreseneter{
-    
-    
-    let vkAPI: VKApi
-    let database: FriendRepository
-    
-    init(database: FriendRepository, api: VKApi) {
-        self.vkAPI = api
-        self.database = database
-    }
-    
-    func getFriendList(completion: @escaping(Swift.Result<[User], Error>)->()) {
-        vkAPI.getFriends(token: Session.shared.token) { result in
-            switch result {
-            case  .success(let users):
-                //users.forEach{ self.database.create(entity: $0) }
-                completion(.success(users))
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-}
 
 class FrendsController:  UITableViewController, UISearchBarDelegate {
+   // var presenterR: FriendsPreseneter?
     
-    var presenter = FriendListPresenterImplementation(database: FriendRepository(stack: CoreDataStack.shared), api: VKApi())
+    
+    var presenter = FriendListPresenterImplementation(database: UsersRepositoryRealm()/*FriendRepository(stack: CoreDataStack.shared)*/, api: VKApi())
     private var allFrends = [User]()
-    private var frendsSection = [Section<User>]()
-    
-    //    var frends : [(title: String, frends: [(name: String, image: String)])] = []
-    //        [
-    //            ("В",[("Ваня", "1"),("Вадим", "3")]),
-    //            ("П",[("Петя", "2")]),
-    //            ("К",[("Коля", "3"),("Клим","4")]),
-    //            ("С",[("Саша", "4"),("Соня","2"),("Семен","1")])
-    //        ]
-    
-    //    var filteredFrends:[(title: String, frends: [(name: String, image: String)])]!
-    
-    var filteredFrends: [Section<User>]!
+    //    private var frendsSection = [Section<User>]()
+    private var filteredFrends: [Section<User>]!
+    // private let database = UsersRepositoryRealm()
     
     private func friendsRequest(){
         presenter.getFriendList{result in
             switch result {
             case  .success(let users):
                 self.allFrends = users
-                let friendDictionary = Dictionary.init(grouping: users) {
+                let friendDictionary = Dictionary(grouping: users) {
                     $0.firstName.prefix(1)
                 }
-                self.frendsSection = friendDictionary.map{Section(title: String($0.key), items: $0.value)}
-                self.frendsSection.sort{$0.title < $1.title}
-                self.filteredFrends = self.frendsSection
-                
+                self.filteredFrends = friendDictionary.map{Section(title: String($0.key), items: $0.value)}
+                self.filteredFrends.sort{$0.title < $1.title}
+                //                self.filteredFrends = self.frendsSection
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -82,6 +46,9 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //presenterR = FriendsPreseneterImplementation()
+       // presenterR?.viewDidLoad()
+        
         friendsRequest()
     }
     
@@ -137,12 +104,25 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredFrends = searchText.isEmpty ? frendsSection : frendsSection.filter {
-            !$0.items.filter{ ($0.firstName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil ) }.isEmpty
+        do {
+            allFrends =  searchText.isEmpty ? try presenter.database.getAllUsers().map{$0.toModel()} : try presenter.database.searchUsers(name: searchText).map{$0.toModel()}
+            
+            let friendDictionary = Dictionary(grouping: allFrends) { $0.firstName.prefix(1) }
+            filteredFrends = friendDictionary.map{Section(title: String($0.key), items: $0.value)}
+            filteredFrends.sort{$0.title < $1.title}
+            tableView.reloadData()
+        } catch {
+            print(error.localizedDescription)
         }
-        
-        tableView.reloadData()
+        //        filteredFrends = searchText.isEmpty ? frendsSection : frendsSection.filter {
+        //            !$0.items.filter{ ($0.firstName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil ) }.isEmpty
+        //        }
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
     
 }
 
