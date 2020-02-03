@@ -27,16 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         Realm.Configuration.defaultConfiguration = config
         
+        print(config.fileURL)
         
-        let realm = try? Realm()
-        do{
-            try realm?.write {
-                realm?.deleteAll()
-            }
-        }
-        catch{
-            print(error)
-        }
+//        let realm = try? Realm()
+//        do{
+//            try realm?.write {
+//                realm?.deleteAll()
+//            }
+//        }
+//        catch{
+//            print(error)
+//        }
         //        let realmRepository = UsersRepositoryRealm()
         //        let user = realmRepository.getUser(id: 0)
         //            print(user)

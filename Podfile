@@ -7,6 +7,7 @@ target 'L1_KhlebnikovIgorUI' do
 
 pod 'Alamofire'
 pod 'RealmSwift'
+pod 'Kingfisher'
 
   # Pods for L1_KhlebnikovIgorUI
 

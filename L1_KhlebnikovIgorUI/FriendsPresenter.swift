@@ -9,7 +9,12 @@
 import Foundation
 import RealmSwift
 
-protocol FriendsPreseneter {
+struct Section<T>{
+    var title: String
+    var items: [T]
+}
+
+protocol FriendsPresenter {
     func viewDidLoad()
     func searchFriends(name: String)
     
@@ -21,24 +26,23 @@ protocol FriendsPreseneter {
 }
 
 
-class FriendsPreseneterImplementation: FriendsPreseneter {
+class FriendsPresenterImplementation: FriendsPresenter {
     private var vkAPI: VKApi
     private var database: UsersRepositoryRealm
     private var sortedFrendsResults = [Section<UserRealm>]()
     private var friendsResult: Results<UserRealm>!
-    private weak var view: FrendsControllerCollBack?
+    private weak var view: FriendsControllerCollBack?
     
     
-    init(database: UsersRepositoryRealm, view: FrendsControllerCollBack){
+    init(database: UsersRepositoryRealm, view: FriendsControllerCollBack){
         self.vkAPI = VKApi()
         self.database = database
         self.view = view
     }
     
-    func viewDidLoad() {
-        getFrendsFromDataBase()
+    func viewDidLoad() { 
         getFrendsFromApi()
-        
+        getFrendsFromDataBase()
     }
     
     private func getFrendsFromDataBase(){
@@ -46,7 +50,7 @@ class FriendsPreseneterImplementation: FriendsPreseneter {
             self.friendsResult = try database.getAllUsers()//.map{$0.toModel()}
             makeSortedSections()
             self.view?.updateTable()
-       }catch {
+        }catch {
             print(error)
         }
     }
@@ -55,15 +59,7 @@ class FriendsPreseneterImplementation: FriendsPreseneter {
         vkAPI.getFriends(token: Session.shared.token) { result in
             switch result {
             case  .success(let users):
-                do{
                     self.database.addUsers(users: users)//Добавили в базу друзей
-                    self.getFrendsFromDataBase()//Отображаем друзей из базы
-                }
-                catch{
-                    //TODO
-                    //Show alert to viewController
-                    print (error)
-                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -71,19 +67,7 @@ class FriendsPreseneterImplementation: FriendsPreseneter {
         
     }
     
-    func searchFriends(name: String) {
-        do {
-            //            allFrends =  name.isEmpty ? try database.getAllUsers().map{$0.toModel()} : try database.searchUsers(name: name).map{$0.toModel()}
-            //
-            //            let friendDictionary = Dictionary(grouping: allFrends) { $0.firstName.prefix(1) }
-            //            sortedFrendsResults = friendDictionary.map{Section(title: String($0.key), items: $0.value)}
-            //            sortedFrendsResults.sort{$0.title < $1.title}
-            //            //TODO
-            //tableView.reloadData()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
+
     
     private func makeSortedSections(){
         let groupedFriends = Dictionary.init(grouping: friendsResult) {$0.firstName.prefix(1)}
@@ -94,7 +78,7 @@ class FriendsPreseneterImplementation: FriendsPreseneter {
 
 
 
-extension FriendsPreseneterImplementation{
+extension FriendsPresenterImplementation{
     func getModelAtIndex(indexPath: IndexPath) -> UserRealm? {
         return sortedFrendsResults[indexPath.section].items[indexPath.row]
     }
@@ -114,4 +98,15 @@ extension FriendsPreseneterImplementation{
     func numberOfRowsInSection(section: Int) -> Int {
         return sortedFrendsResults[section].items.count
     }
+    
+    func searchFriends(name: String) {
+        do{
+            self.friendsResult =  name.isEmpty ? try self.database.getAllUsers() : try  self.database.searchUsers(name: name)
+            self.makeSortedSections()
+            self.view?.updateTable()
+        }catch {
+            print(error)
+        }
+    }
+    
 }

@@ -9,7 +9,7 @@
 import RealmSwift
 
 
-protocol  GroupRepositoryRealm {
+protocol  GroupsRepositoryRealm {
     func searchGroups(name: String) throws -> Results<GroupRealm>
     func getAllGroups() throws -> Results<GroupRealm>
     func addGroups(groups: [Group])
@@ -17,7 +17,7 @@ protocol  GroupRepositoryRealm {
     func getGroup(id: Int)->GroupRealm?
 }
 
-class GroupRepositoryRealmImplementations: GroupRepositoryRealm{
+class GroupsRepositoryRealmImplementations: GroupsRepositoryRealm{
     
     func searchGroups(name: String) throws -> Results<GroupRealm>{
         do{

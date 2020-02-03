@@ -6,9 +6,14 @@
 //  Copyright © 2020 Igor. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
+protocol FriendsConfigurator {
+    func configure(view: FriendsController)
+}
 
-class FriendsConfigurator{
-    
+class FriendsConfiguratorImplementation: FriendsConfigurator{
+    func configure(view: FriendsController) {
+        view.presenter = FriendsPresenterImplementation(database: UsersRepositoryRealmImplementations(), view: view)
+    }
 }

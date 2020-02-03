@@ -14,10 +14,10 @@ protocol GroupsPresenter {
     func viewDidLoad()
     func searchGroups(name: String)
     
-    func numberOfSections() -> Int
+//    func numberOfSections() -> Int
     func numberOfRowsInSection(section: Int) -> Int
-    func getSectionIndexTitles() -> [String]?
-    func getTitleForSection(section: Int) -> String?
+    //func getSectionIndexTitles() -> [String]?
+//    func getTitleForSection(section: Int) -> String?
     func getModelAtIndex(indexPath: IndexPath) -> GroupRealm?
 }
 
@@ -25,12 +25,13 @@ protocol GroupsPresenter {
 class GroupsPresenterImplementation: GroupsPresenter {
     private var vkAPI: VKApi
     private var database: GroupsRepositoryRealm
-    private var sortedGroupsResults = [Section<GroupRealm>]()
+   // private var sortedGroupsResults = [Section<GroupRealm>]()
     private var groupsResult: Results<GroupRealm>!
-    private weak var view: FriendsControllerCollBack?
+    private weak var view: GroupsControllerCollBack?
+    private var token: NotificationToken?
     
     
-    init(database: GroupsRepositoryRealm, view: FriendsControllerCollBack){
+    init(database: GroupsRepositoryRealm, view: GroupsControllerCollBack){
         self.vkAPI = VKApi()
         self.database = database
         self.view = view
@@ -43,8 +44,21 @@ class GroupsPresenterImplementation: GroupsPresenter {
     
     private func getGroupsFromDataBase(){
         do{
-            self.groupsResult = try database.getAllGroups()//.map{$0.toModel()}
-            makeSortedSections()
+            self.groupsResult = try database.getAllGroups()
+            
+            token = self.groupsResult.observe{results in
+                switch results {
+                case .error(let error): break
+                case .initial(let groups): break
+                case let .update(_,  deletions, insertions, modifications):
+                    print(deletions)
+                    print(insertions)
+                    print(modifications)
+                    break
+                }
+            }
+            
+//            makeSortedSections()
             self.view?.updateTable()
         }catch {
             print(error)
@@ -65,40 +79,40 @@ class GroupsPresenterImplementation: GroupsPresenter {
     
 
     
-    private func makeSortedSections(){
-        let groupedFriends = Dictionary.init(grouping: groupsResult) {$0.name.prefix(1)}
-        sortedGroupsResults = groupedFriends.map { Section(title: String($0.key), items: $0.value)}
-        sortedGroupsResults.sort{$0.title < $1.title}
-    }
+//    private func makeSortedSections(){
+//        let groupedGroups = Dictionary.init(grouping: groupsResult) {$0.name.prefix(1)}
+//        sortedGroupsResults = groupedGroups.map { Section(title: String($0.key), items: $0.value)}
+//        sortedGroupsResults.sort{$0.title < $1.title}
+//    }
 }
 
 
 
 extension GroupsPresenterImplementation{
     func getModelAtIndex(indexPath: IndexPath) -> GroupRealm? {
-        return sortedGroupsResults[indexPath.section].items[indexPath.row]
+        return groupsResult[indexPath.row]//indexPath.section].items[indexPath.row]
     }
     
-    func numberOfSections() -> Int {
-        sortedGroupsResults.count
-    }
+//    func numberOfSections() -> Int {
+//        sortedGroupsResults.count
+//    }
     
-    func getSectionIndexTitles() -> [String]? {
-        return  sortedGroupsResults.map( {$0.title})
-    }
+//    func getSectionIndexTitles() -> [String]? {
+//        return  sortedGroupsResults.map( {$0.title})
+//    }
     
-    func getTitleForSection(section: Int) -> String? {
-        return sortedGroupsResults[section].title
-    }
+//    func getTitleForSection(section: Int) -> String? {
+//        return sortedGroupsResults[section].title
+//    }
     
     func numberOfRowsInSection(section: Int) -> Int {
-        return sortedGroupsResults[section].items.count
+        return  groupsResult.count
     }
     
     func searchGroups(name: String) {
         do{
             self.groupsResult =  name.isEmpty ? try self.database.getAllGroups() : try  self.database.searchGroups(name: name)
-            self.makeSortedSections()
+//            self.makeSortedSections()
             self.view?.updateTable()
         }catch {
             print(error)

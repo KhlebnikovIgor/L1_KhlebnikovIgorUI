@@ -7,26 +7,22 @@
 //
 
 import UIKit
-import Alamofire
 
 
-struct Section<T>{
-    var title: String
-    var items: [T]
-}
-
-protocol FrendsControllerCollBack: class{
+protocol FriendsControllerCollBack: class{
     func updateTable()
 }
 
 
-class FrendsController:  UITableViewController, UISearchBarDelegate {
+class FriendsController:  UITableViewController, UISearchBarDelegate {
     
-    var presenter: FriendsPreseneter?
+    var presenter: FriendsPresenter?
+//    var configurator: FriendsConfigurator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = FriendsPreseneterImplementation(database: UsersRepositoryRealm(), view: self)
+//        configurator?.configure(view: self)
+        presenter = FriendsPresenterImplementation(database: UsersRepositoryRealmImplementations(), view: self)
         presenter?.viewDidLoad()
     }
     
@@ -61,42 +57,26 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
+        if editingStyle == .delete {
 //            filteredFrends.remove(at: indexPath.row)
 //            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "aboutAFrend" {
-//            guard let destinationController = segue.destination as? AboutAFrendController else { return }
-//
-//            let index = tableView.indexPathForSelectedRow?.row ?? 0
-//            let section = tableView.indexPathForSelectedRow?.section ?? 0
-//            if filteredFrends.count > index {
-//                destinationController.navigationItem.title = filteredFrends[section].items[index].firstName
-//                destinationController.nameFrend = filteredFrends[section].items[index].firstName
-//                destinationController.photoFrend = filteredFrends[section].items[index].avatarPath
-//            }
-//        }
+        if segue.identifier == "aboutAFrend" {
+            guard let destinationController = segue.destination as? AboutAFrendController else { return }
+
+            guard let indexPath = tableView?.indexPathForSelectedRow else {return}
+            
+            let friend = presenter?.getModelAtIndex(indexPath: indexPath)
+            destinationController.showData(nameFriend: friend?.firstName, photoFriend: friend?.photo100)
+        }
     }
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter?.searchFriends(name: searchText)
-//        do {
-//            allFrends =  searchText.isEmpty ? try presenter.database.getAllUsers().map{$0.toModel()} : try presenter.database.searchUsers(name: searchText).map{$0.toModel()}
-//
-//            let friendDictionary = Dictionary(grouping: allFrends) { $0.firstName.prefix(1) }
-//            filteredFrends = friendDictionary.map{Section(title: String($0.key), items: $0.value)}
-//            filteredFrends.sort{$0.title < $1.title}
-//            tableView.reloadData()
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-        //        filteredFrends = searchText.isEmpty ? frendsSection : frendsSection.filter {
-        //            !$0.items.filter{ ($0.firstName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil ) }.isEmpty
-        //        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -106,7 +86,7 @@ class FrendsController:  UITableViewController, UISearchBarDelegate {
     
 }
 
-extension FrendsController: FrendsControllerCollBack{
+extension FriendsController: FriendsControllerCollBack{
     func updateTable() {
         tableView.reloadData()
     }

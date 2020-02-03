@@ -6,10 +6,19 @@
 //  Copyright © 2020 Igor. All rights reserved.
 //
 
-import Foundation
+
 import RealmSwift
 
-class UsersRepositoryRealm{
+
+protocol  UsersRepositoryRealm {
+    func searchUsers(name: String) throws -> Results<UserRealm>
+    func getAllUsers() throws -> Results<UserRealm>
+    func addUsers(users: [User])
+    func addUser(user: User)
+    func getUser(id: Int)->UserRealm?
+ }
+
+class UsersRepositoryRealmImplementations: UsersRepositoryRealm{
     
     func searchUsers(name: String) throws -> Results<UserRealm>{
         do{
@@ -46,7 +55,7 @@ class UsersRepositoryRealm{
                     usersRealm.append(userRealm)
                     //        newUser.city = city
                 }
-                realm.add(usersRealm)
+                realm.add(usersRealm, update: .modified)
             }
             print(realm.objects(UserRealm.self))
         }

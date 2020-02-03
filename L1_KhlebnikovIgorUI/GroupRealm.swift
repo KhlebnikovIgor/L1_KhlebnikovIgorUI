@@ -6,7 +6,7 @@
 //  Copyright © 2020 Igor. All rights reserved.
 //
 
-import Foundation
+
 import RealmSwift
 
 class GroupRealm: Object{
@@ -14,26 +14,14 @@ class GroupRealm: Object{
         @objc dynamic var name = ""
         @objc dynamic var screenName = ""
         @objc dynamic var photo100 = ""
-}
-
-class GroupRepositoryRealm{
     
-    func addGroup(name: String, screenName: String, photo100: String){
-        let realm = try? Realm()
-        let newGroup = GroupRealm()
-        newGroup.id = 1
-        newGroup.name = name
-        newGroup.screenName = screenName
-        newGroup.photo100 = photo100
-
-        try? realm?.write {
-            realm?.add(newGroup)
-        }
-    }
-     
-    func getGroup(id: Int)->GroupRealm?{
-        let realm = try! Realm()
-        return realm.objects(GroupRealm.self).filter("id == %@", id).first
+    override class func indexedProperties() -> [String] {
+        return ["name"]
     }
     
+    override class func primaryKey() -> String?{
+        return "id"
+    }
 }
+
+
