@@ -8,14 +8,7 @@
 
 import Foundation
 
-struct PhotoJson: Codable {
-    let response: ResponsePhotos
-}
 
-struct ResponsePhotos: Codable {
-    let count: Int
-    let items: [Photo]
-}
 
 struct Photo: Codable {
     let id, albumID, ownerID: Int

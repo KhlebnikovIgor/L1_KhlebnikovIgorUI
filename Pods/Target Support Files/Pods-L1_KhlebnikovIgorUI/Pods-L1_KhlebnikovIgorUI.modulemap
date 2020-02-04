@@ -1,6 +1,0 @@
-framework module Pods_L1_KhlebnikovIgorUI {
-  umbrella header "Pods-L1_KhlebnikovIgorUI-umbrella.h"
-
-  export *
-  module * { export * }
-}

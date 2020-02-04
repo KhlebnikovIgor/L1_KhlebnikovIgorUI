@@ -9,15 +9,7 @@
 import Foundation
 
 
-struct GroupJson: Codable {
-    let response: ResponseGroup
-}
 
-
-struct ResponseGroup: Codable {
-    let count: Int
-    let items: [Group]
-}
 
 
 struct Group: Codable {

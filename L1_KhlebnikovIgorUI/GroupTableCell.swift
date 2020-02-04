@@ -23,6 +23,9 @@ class GroupTableCell:UITableViewCell{
         groupAvatar.nameImage = nil
     }
     
-
+    func renderCell(model: GroupRealm){
+        groupName.text = model.name
+        groupAvatar.nameImage = model.photo100
+    }
 }
 

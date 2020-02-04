@@ -17,4 +17,9 @@ class FrendTableCell:UITableViewCell{
         nameFrend.text = nil
         photoFrend.nameImage = nil
     }
+    
+    func renderCell(model: UserRealm){
+        nameFrend.text = model.firstName
+        photoFrend.nameImage = model.photo100
+    }
 }
