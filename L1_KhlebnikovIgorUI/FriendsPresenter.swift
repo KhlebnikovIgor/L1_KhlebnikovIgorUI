@@ -32,6 +32,7 @@ class FriendsPresenterImplementation: FriendsPresenter {
     private var sortedFrendsResults = [Section<UserRealm>]()
     private var friendsResult: Results<UserRealm>!
     private weak var view: FriendsControllerCollBack?
+    private var token: NotificationToken?
     
     
     init(database: UsersRepositoryRealm, view: FriendsControllerCollBack){
@@ -45,11 +46,25 @@ class FriendsPresenterImplementation: FriendsPresenter {
         getFrendsFromDataBase()
     }
     
+    deinit {
+        token?.invalidate()
+    }
+    
     private func getFrendsFromDataBase(){
         do{
             self.friendsResult = try database.getAllUsers()//.map{$0.toModel()}
-            makeSortedSections()
-            self.view?.updateTable()
+            token = self.friendsResult.observe{[weak self] results in
+                switch results {
+                case .error(let error): break
+                case .initial(let groups):
+                    
+                    break
+                case let .update(_,  deletions, insertions, modifications):
+                   // self?.view?.updateTable(deletions, insertions, modifications)
+                    break
+                }
+                self?.makeSortedSections()
+            }
         }catch {
             print(error)
         }
@@ -59,7 +74,7 @@ class FriendsPresenterImplementation: FriendsPresenter {
         vkAPI.getFriends(token: Session.shared.token) { result in
             switch result {
             case  .success(let users):
-                    self.database.addUsers(users: users)//Добавили в базу друзей
+                self.database.addUsers(users: users)//Добавили в базу друзей
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -67,12 +82,13 @@ class FriendsPresenterImplementation: FriendsPresenter {
         
     }
     
-
+    
     
     private func makeSortedSections(){
         let groupedFriends = Dictionary.init(grouping: friendsResult) {$0.firstName.prefix(1)}
         sortedFrendsResults = groupedFriends.map { Section(title: String($0.key), items: $0.value)}
         sortedFrendsResults.sort{$0.title < $1.title}
+        self.view?.updateTable()
     }
 }
 
@@ -103,7 +119,6 @@ extension FriendsPresenterImplementation{
         do{
             self.friendsResult =  name.isEmpty ? try self.database.getAllUsers() : try  self.database.searchUsers(name: name)
             self.makeSortedSections()
-            self.view?.updateTable()
         }catch {
             print(error)
         }

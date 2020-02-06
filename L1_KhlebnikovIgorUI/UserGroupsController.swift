@@ -10,6 +10,7 @@ import UIKit
 
 protocol GroupsControllerCollBack: class{
     func updateTable()
+    func updateTable(_ deletions: [Int], _ insertions: [Int], _ modifications: [Int])
 }
 
 
@@ -69,6 +70,14 @@ class UserGroupsController:  UITableViewController {
 extension UserGroupsController: GroupsControllerCollBack{
     func updateTable() {
         tableView.reloadData()
+    }
+    
+    func updateTable(_ deletions: [Int], _ insertions: [Int], _ modifications: [Int]){
+        tableView.beginUpdates()
+        tableView.deleteRows(at: deletions.map{ IndexPath(row: $0, section: 0) }, with: .none)
+        tableView.insertRows(at: insertions.map{ IndexPath(row: $0, section: 0) }, with: .none)
+        tableView.reloadRows(at: modifications.map{ IndexPath(row: $0, section: 0) }, with: .none)
+        tableView.endUpdates()
     }
     
 }

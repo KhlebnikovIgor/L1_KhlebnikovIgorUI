@@ -91,7 +91,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yT3-eZ-1Jv">
-                                            <rect key="frame" x="16" y="24.5" width="57" height="29"/>
+                                            <rect key="frame" x="16" y="24.5" width="322" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -110,9 +110,9 @@
                                         <constraint firstItem="xZN-mf-Jt3" firstAttribute="top" secondItem="rJ4-4J-Kt9" secondAttribute="top" constant="8" id="6TO-xP-gnI"/>
                                         <constraint firstAttribute="bottom" secondItem="xZN-mf-Jt3" secondAttribute="bottom" constant="8" id="CE2-rf-wJ6"/>
                                         <constraint firstItem="yT3-eZ-1Jv" firstAttribute="leading" secondItem="rJ4-4J-Kt9" secondAttribute="leading" constant="16" id="T4d-Yb-MGj"/>
-                                        <constraint firstItem="xZN-mf-Jt3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="yT3-eZ-1Jv" secondAttribute="trailing" constant="300.5" id="fBk-06-rxy"/>
                                         <constraint firstItem="yT3-eZ-1Jv" firstAttribute="centerY" secondItem="xZN-mf-Jt3" secondAttribute="centerY" id="jRB-Vl-iZL"/>
                                         <constraint firstAttribute="trailing" secondItem="xZN-mf-Jt3" secondAttribute="trailing" constant="16" id="mCi-Yj-dcW"/>
+                                        <constraint firstItem="xZN-mf-Jt3" firstAttribute="trailing" secondItem="yT3-eZ-1Jv" secondAttribute="trailing" constant="60" id="vGQ-bq-ahI"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -148,7 +148,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="allGroupCell" rowHeight="78" id="sYI-do-Fry" customClass="GroupTableCell" customModule="L1_KhlebnikovIgorUI" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="26" width="414" height="78"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sYI-do-Fry" id="5AP-4M-aRR">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
@@ -400,7 +400,7 @@
         <scene sceneID="ghR-2c-cat">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="rl7-Fo-Wvo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Группы" id="xyv-UY-ejy"/>
+                    <tabBarItem key="tabBarItem" title="Группы" image="person.2.square.stack.fill" catalog="system" id="xyv-UY-ejy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fLS-gI-5nN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -419,7 +419,7 @@
         <scene sceneID="W29-Sn-sxn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="4TP-jD-caI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Друзья" id="6KR-hr-dNe"/>
+                    <tabBarItem key="tabBarItem" title="Друзья" image="person.3.fill" catalog="system" id="6KR-hr-dNe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ePm-hK-jCc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -458,7 +458,7 @@
         <scene sceneID="e14-NK-FEq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Dmw-Jx-rbX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Галерея" id="sDi-ja-Dgj"/>
+                    <tabBarItem key="tabBarItem" title="Галерея" image="photo.fill.on.rectangle.fill" catalog="system" id="sDi-ja-Dgj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T1r-PB-AyQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -477,7 +477,7 @@
         <scene sceneID="iby-52-i5e">
             <objects>
                 <navigationController title="Новости" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="dTh-Ra-fVd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Новости" id="ei2-dI-QBF"/>
+                    <tabBarItem key="tabBarItem" title="Новости" image="eyeglasses" catalog="system" id="ei2-dI-QBF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4f3-UM-9MB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -493,4 +493,10 @@
             <point key="canvasLocation" x="-81" y="-2151"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eyeglasses" catalog="system" width="64" height="26"/>
+        <image name="person.2.square.stack.fill" catalog="system" width="56" height="64"/>
+        <image name="person.3.fill" catalog="system" width="71" height="34"/>
+        <image name="photo.fill.on.rectangle.fill" catalog="system" width="64" height="48"/>
+    </resources>
 </document>

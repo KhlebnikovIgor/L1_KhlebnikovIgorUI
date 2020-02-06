@@ -11,18 +11,19 @@ import UIKit
 
 protocol FriendsControllerCollBack: class{
     func updateTable()
+    func updateTable(_ deletions: [Int], _ insertions: [Int], _ modifications: [Int])
 }
 
 
 class FriendsController:  UITableViewController, UISearchBarDelegate {
     
     var presenter: FriendsPresenter?
-//    var configurator: FriendsConfigurator?
+    var configurator: FriendsConfigurator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        configurator?.configure(view: self)
-        presenter = FriendsPresenterImplementation(database: UsersRepositoryRealmImplementations(), view: self)
+        configurator = FriendsConfiguratorImplementation()
+        configurator?.configure(view: self)
         presenter?.viewDidLoad()
     }
     
@@ -69,6 +70,8 @@ class FriendsController:  UITableViewController, UISearchBarDelegate {
 
             guard let indexPath = tableView?.indexPathForSelectedRow else {return}
             
+
+            
             let friend = presenter?.getModelAtIndex(indexPath: indexPath)
             destinationController.showData(nameFriend: friend?.firstName, photoFriend: friend?.photo100)
         }
@@ -91,5 +94,12 @@ extension FriendsController: FriendsControllerCollBack{
         tableView.reloadData()
     }
     
+    func updateTable(_ deletions: [Int], _ insertions: [Int], _ modifications: [Int]){
+        tableView.beginUpdates()
+        tableView.deleteRows(at: deletions.map{ IndexPath(row: $0, section: 0) }, with: .none)
+        tableView.insertRows(at: insertions.map{ IndexPath(row: $0, section: 0) }, with: .none)
+        tableView.reloadRows(at: modifications.map{ IndexPath(row: $0, section: 0) }, with: .none)
+        tableView.endUpdates()
+    }
     
 }
