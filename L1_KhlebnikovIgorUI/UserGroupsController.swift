@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol GroupsControllerCollBack: class{
+    func updateTable()
+    func updateTable(_ deletions: [Int], _ insertions: [Int], _ modifications: [Int])
+}
+
+
 class UserGroupsController:  UITableViewController {
-    var groups: [(name: String, image: String)] = []
-    var vkApi = VKApi()
- 
+    var presenter: GroupsPresenter?
+    
     
     @IBAction func returnToUserGroups(unwindSegue: UIStoryboardSegue) {
         if unwindSegue.identifier == "addGroup" {
@@ -19,34 +24,32 @@ class UserGroupsController:  UITableViewController {
             guard let indexPath = allGroupsController.tableView.indexPathForSelectedRow else { return }
             
             let group = allGroupsController.groupsAll[indexPath.row]
-            if !groups.contains(where: { $0.name == group.name }) {
-                groups.append(group)//allGroupsController.groupsAll[indexPath.row])
-                tableView.insertRows(at: [IndexPath(row: groups.count - 1, section: 0)], with: .fade)
-            }
+            //            if !groups.contains(where: { $0.name == group.name }) {
+            //                groups.append(group)//allGroupsController.groupsAll[indexPath.row])
+            //                tableView.insertRows(at: [IndexPath(row: groups.count - 1, section: 0)], with: .fade)
+            //            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vkApi.getGroups(token: Session.shared.token, completionHandler: { (items: [Group]) in
-            for group in items{
-                self.groups.append((name: group.name, image: group.photo100))
-            }
-            self.tableView.reloadData()
-        } )
+        presenter = GroupsPresenterImplementation(database: GroupsRepositoryRealmImplementations(), view: self)
+        presenter?.viewDidLoad()
     }
     
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return   presenter?.numberOfRowsInSection(section: section) ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myGroupCell", for: indexPath) as! GroupTableCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "myGroupCell", for: indexPath) as? GroupTableCell,
+            let model = presenter?.getModelAtIndex(indexPath: indexPath) else {
+                return UITableViewCell()
+        }
+        cell.renderCell(model: model)
         
-        cell.groupName.text = groups[indexPath.row].name
-        cell.groupAvatar.nameImage = groups[indexPath.row].image
         return cell
     }
     
@@ -58,11 +61,23 @@ class UserGroupsController:  UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            groups.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            //            groups.remove(at: indexPath.row)
+            //            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }
 
-
-
+extension UserGroupsController: GroupsControllerCollBack{
+    func updateTable() {
+        tableView.reloadData()
+    }
+    
+    func updateTable(_ deletions: [Int], _ insertions: [Int], _ modifications: [Int]){
+        tableView.beginUpdates()
+        tableView.deleteRows(at: deletions.map{ IndexPath(row: $0, section: 0) }, with: .none)
+        tableView.insertRows(at: insertions.map{ IndexPath(row: $0, section: 0) }, with: .none)
+        tableView.reloadRows(at: modifications.map{ IndexPath(row: $0, section: 0) }, with: .none)
+        tableView.endUpdates()
+    }
+    
+}

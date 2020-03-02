@@ -3,4 +3,308 @@
    uuid = "8F963206-2900-4BC6-9D8B-70766A279D3E"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E51E5AC-1BB1-4A7D-A67D-E403BDEAD769"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/Group.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87D7C90C-EDB3-4D12-A32C-CB36DA931A71"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/FriendRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "create(entity:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6767CBD9-0956-47FE-A5A8-903EE5CDD217"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/FriendRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "save()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF852936-9366-4D58-86B9-3A2C789102AF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/FrendsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "FrendsController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A7FE2025-E868-4DE6-93E0-BAFADEB6C292"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/FrendsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "numberOfSections(in:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A7FE2025-E868-4DE6-93E0-BAFADEB6C292 - b49a3875a75651c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "L1_KhlebnikovIgorUI.FrendsController.sectionIndexTitles(for: __C.UITableView) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;"
+                  moduleName = "L1_KhlebnikovIgorUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorkhlebnikov/Documents/L1_KhlebnikovIgorUI-2-2-3_-2/L1_KhlebnikovIgorUI/FrendsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "58">
+               </Location>
+               <Location
+                  uuid = "A7FE2025-E868-4DE6-93E0-BAFADEB6C292 - 612e5681dea0edd6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (L1_KhlebnikovIgorUI.Section&lt;L1_KhlebnikovIgorUI.User&gt;) -&gt; Swift.String in L1_KhlebnikovIgorUI.FrendsController.sectionIndexTitles(for: __C.UITableView) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;"
+                  moduleName = "L1_KhlebnikovIgorUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorkhlebnikov/Documents/L1_KhlebnikovIgorUI-2-2-3_-2/L1_KhlebnikovIgorUI/FrendsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "39">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CCED8196-7493-4F19-B5EE-A110587055B6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/UserGroupsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07332CB8-1D26-4547-AF39-75A3278DBAA5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/FriendsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1A6E9DC1-5926-4706-ACF3-9F6FF5FB1C8E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/FriendsPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "getFrendsFromDataBase()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1A6E9DC1-5926-4706-ACF3-9F6FF5FB1C8E - dbd415222acfc33c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RealmSwift.RealmCollectionChange&lt;RealmSwift.Results&lt;L1_KhlebnikovIgorUI.UserRealm&gt;&gt;) -&gt; () in L1_KhlebnikovIgorUI.FriendsPresenterImplementation.(getFrendsFromDataBase in _B840063C962DC0DBD773210525E1CAB4)() -&gt; ()"
+                  moduleName = "L1_KhlebnikovIgorUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorkhlebnikov/Documents/L1_KhlebnikovIgorUI-2-2-3_-2/L1_KhlebnikovIgorUI/FriendsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "45">
+               </Location>
+               <Location
+                  uuid = "1A6E9DC1-5926-4706-ACF3-9F6FF5FB1C8E - dbd415222acfc33c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RealmSwift.RealmCollectionChange&lt;RealmSwift.Results&lt;L1_KhlebnikovIgorUI.UserRealm&gt;&gt;) -&gt; () in L1_KhlebnikovIgorUI.FriendsPresenterImplementation.(getFrendsFromDataBase in _B840063C962DC0DBD773210525E1CAB4)() -&gt; ()"
+                  moduleName = "L1_KhlebnikovIgorUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorkhlebnikov/Documents/L1_KhlebnikovIgorUI-2-2-3_-2/L1_KhlebnikovIgorUI/FriendsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "95">
+               </Location>
+               <Location
+                  uuid = "1A6E9DC1-5926-4706-ACF3-9F6FF5FB1C8E - dbd415222acfc33c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RealmSwift.RealmCollectionChange&lt;RealmSwift.Results&lt;L1_KhlebnikovIgorUI.UserRealm&gt;&gt;) -&gt; () in L1_KhlebnikovIgorUI.FriendsPresenterImplementation.(getFrendsFromDataBase in _B840063C962DC0DBD773210525E1CAB4)() -&gt; ()"
+                  moduleName = "L1_KhlebnikovIgorUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorkhlebnikov/Documents/L1_KhlebnikovIgorUI-2-2-3_-2/L1_KhlebnikovIgorUI/FriendsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "038F673C-E99A-4B4A-8936-0877F8FA4CB4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/GroupsPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "getGroupsFromDataBase()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "038F673C-E99A-4B4A-8936-0877F8FA4CB4 - 8893c2fba296f522"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RealmSwift.RealmCollectionChange&lt;RealmSwift.Results&lt;L1_KhlebnikovIgorUI.GroupRealm&gt;&gt;) -&gt; () in L1_KhlebnikovIgorUI.GroupsPresenterImplementation.(getGroupsFromDataBase in _D22BFCE301FFFD64F0C99DF93AF4A217)() -&gt; ()"
+                  moduleName = "L1_KhlebnikovIgorUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorkhlebnikov/Documents/L1_KhlebnikovIgorUI-2-2-3_-2/L1_KhlebnikovIgorUI/GroupsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "038F673C-E99A-4B4A-8936-0877F8FA4CB4 - 8893c2fba296f522"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RealmSwift.RealmCollectionChange&lt;RealmSwift.Results&lt;L1_KhlebnikovIgorUI.GroupRealm&gt;&gt;) -&gt; () in L1_KhlebnikovIgorUI.GroupsPresenterImplementation.(getGroupsFromDataBase in _D22BFCE301FFFD64F0C99DF93AF4A217)() -&gt; ()"
+                  moduleName = "L1_KhlebnikovIgorUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorkhlebnikov/Documents/L1_KhlebnikovIgorUI-2-2-3_-2/L1_KhlebnikovIgorUI/GroupsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "038F673C-E99A-4B4A-8936-0877F8FA4CB4 - 8893c2fba296f522"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RealmSwift.RealmCollectionChange&lt;RealmSwift.Results&lt;L1_KhlebnikovIgorUI.GroupRealm&gt;&gt;) -&gt; () in L1_KhlebnikovIgorUI.GroupsPresenterImplementation.(getGroupsFromDataBase in _D22BFCE301FFFD64F0C99DF93AF4A217)() -&gt; ()"
+                  moduleName = "L1_KhlebnikovIgorUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorkhlebnikov/Documents/L1_KhlebnikovIgorUI-2-2-3_-2/L1_KhlebnikovIgorUI/GroupsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "133">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B096253D-EAFA-4B25-B80B-A6E1953942C5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/LoginFormController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "createAuth(login:pwd:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A0DCB8BF-6C91-42C7-9773-F2735DB6F912"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "L1_KhlebnikovIgorUI/LoginFormController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "deleteUserFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

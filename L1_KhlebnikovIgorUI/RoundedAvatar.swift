@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 class RoundedAvatar : UIControl{
@@ -76,13 +77,14 @@ extension UIButton {
         guard let url = URL(string: url_) else {return}
         
         DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
+           // if let data = try? Data(contentsOf: url) {
+//            if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self?.setImage(image, for: .normal)
+                        //self?.setImage(image, for: .normal)
+                        self?.kf.setImage(with: url, for: .normal)//setImage(image, for: .normal)
                     }
-                }
-            }
+//                }
+            //}
         }
     }
 }
